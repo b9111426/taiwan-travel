@@ -1,0 +1,19 @@
+
+
+#main{
+  height: calc(100vh - $headerHight - $footHight) ;
+
+}
+#header{
+  .navbar{
+    height: $headerHight;
+    .nav-item{
+      margin-left: 20px;
+    }
+  }
+}
+
+#footer{
+  height: $footHight;
+  line-height: $footHight;
+}

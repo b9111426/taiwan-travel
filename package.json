@@ -1,0 +1,28 @@
+{
+  "name": "taiwan-travel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rimraf dist",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --no-minify --public-url ./",
+    "build-prod": "parcel build src/index.html"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.0",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "latest",
+    "eslint": "^8.20.0",
+    "parcel-bundler": "^1.12.5",
+    "sass": "^1.53.0"
+  }
+}
