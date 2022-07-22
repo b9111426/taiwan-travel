@@ -6,7 +6,11 @@
 }
 #header{
   .navbar{
-    height: $headerHight;
+    @media(max-width:992px){
+      padding:0 8px;
+    }
+    padding:0 45px;
+    
     .nav-item{
       margin-left: 20px;
     }

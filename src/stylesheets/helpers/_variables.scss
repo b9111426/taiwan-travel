@@ -299,6 +299,7 @@ $cyans: (
 
 // scss-docs-start theme-color-variables
 $primary:       #65895F;//$blue !default;
+$primary-light: #A8B8A5;
 $secondary:     #646464;//$gray-600 !default;
 $success:       $green !default;
 $info:          $cyan !default;
@@ -581,7 +582,8 @@ $font-sizes: (
   3: $h3-font-size,
   4: $h4-font-size,
   5: $h5-font-size,
-  6: $h6-font-size
+  6: $h6-font-size,
+
 ) !default;
 // scss-docs-end font-sizes
 
@@ -601,7 +603,7 @@ $display-font-sizes: (
   3: 4rem,
   4: 3.5rem,
   5: 3rem,
-  6: 2.5rem
+  6: 2.5rem,
 ) !default;
 
 $display-font-family: null !default;
@@ -1083,7 +1085,7 @@ $nav-pills-link-active-bg:          $component-active-bg !default;
 
 // scss-docs-start navbar-variables
 $navbar-padding-y:                  $spacer * .5 !default;
-$navbar-padding-x:                  45px;//null !default;
+$navbar-padding-x:                  null !default;
 
 $navbar-nav-link-padding-x:         .5rem !default;
 
