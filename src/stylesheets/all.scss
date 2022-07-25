@@ -29,10 +29,10 @@
 
 
 @import "_variable";
+@import "_mixin";
 @import "_base";
 @import "_layout";
-@import "_mixin";
 //components
-@import "./components/hamburgerIcon"
-
+@import "./components/hamburgerIcon";
+@import "./components/swiper"
 //pages

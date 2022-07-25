@@ -1,19 +1,28 @@
-
+#header{
+  height: $header-hight;
+  @include mobile(){
+    height: $header-s-hight;
+  }
+}
 
 #main{
-  height: calc(100vh - $header-hight - $foot-hight - $border-hight ) ;
-  @media(max-width:992px){
-    height: calc(100vh - $header-s-hight - $foot-hight )
+  height: calc(2000px - $header-hight - $foot-hight - $border-hight ) ;
+  @include mobile(){
+    height: calc(2000px - $header-s-hight - $foot-hight )
   }
 }
 
 .navbar{
+  z-index: 99;
+  right: 0;
+  left: 0;
   padding:0 45px;
   border-bottom: $border-hight solid #ddd;
-  @media(max-width:992px){
+  @include mobile(){
     padding:0 8px;
     border-bottom: 0;
   }
+
   &-brand{
     padding-top: 0;
     padding-bottom: 0;
@@ -32,11 +41,24 @@
     line-height: $header-hight;
     padding-top: 0;
     padding-bottom: 0;
-
-    @media(max-width:992px){
+    @include mobile(){
       line-height: $header-hight * .5;
     }
   }
+}
+//.swiper{
+//  height: 500px;
+//}
+
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+  background: $primary;
 }
 
 .footer{

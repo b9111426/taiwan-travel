@@ -10,9 +10,30 @@
 <body>
   <div id="app">
     <header id="header"></header>
-    <section id="main" class="d-flex justify-content-center align-items-center">
-      <div class="container text-center">
-        <h1 class="d-line-block">首頁</h1>
+    <!-- Slider main container -->
+
+    <section id="main">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <img src="https://picsum.photos/id/30/1200/800" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://picsum.photos/id/20/1200/800" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://picsum.photos/id/10/1200/800" alt="">
+          </div>
+          ...
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </section>
 
