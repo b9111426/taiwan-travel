@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --no-minify --public-url ./",
+    "build": "parcel build src/index.html --public-url ./",
     "build-prod": "parcel build src/index.html"
   },
   "dependencies": {

@@ -5,8 +5,8 @@ import axios from 'axios'
 import $ from 'jquery'
 
 // Html components
-import footerHtml from '../html/components/footer.html'
 import headerHtml from '../html/components/header.html'
+import footerHtml from '../html/components/footer.html'
 
 $(() => {
   $('#header').html(headerHtml)
