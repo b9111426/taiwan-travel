@@ -846,7 +846,7 @@ $input-focus-color:                     $input-color !default;
 $input-focus-width:                     $input-btn-focus-width !default;
 $input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
 
-$input-placeholder-color:               $gray-600 !default;
+$input-placeholder-color:               $gray-500 !default;
 $input-plaintext-color:                 $body-color !default;
 
 $input-height-border:                   $input-border-width * 2 !default;
@@ -1105,19 +1105,19 @@ $navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
 // scss-docs-end navbar-variables
 
 // scss-docs-start navbar-theme-variables
-$navbar-dark-color:                 rgba($white, .55) !default;
-$navbar-dark-hover-color:           rgba($white, .75) !default;
+$navbar-dark-color:                 rgba($light, .75) !default;
+$navbar-dark-hover-color:           rgba($light, 1) !default;
 $navbar-dark-active-color:          $white !default;
-$navbar-dark-disabled-color:        rgba($white, .25) !default;
+$navbar-dark-disabled-color:        rgba($light, .25) !default;
 $navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-dark-toggler-border-color:  rgba($white, .1) !default;
+$navbar-dark-toggler-border-color:  rgba($light, .1) !default;
 
-$navbar-light-color:                rgba($secondary, 1) !default;
-$navbar-light-hover-color:          rgba($secondary, .7) !default;
-$navbar-light-active-color:         rgba($secondary, .9) !default;
-$navbar-light-disabled-color:       rgba($secondary, .3) !default;
+$navbar-light-color:                rgba($primary, 1) !default;
+$navbar-light-hover-color:          rgba($primary, .7) !default;
+$navbar-light-active-color:         rgba($primary, .9) !default;
+$navbar-light-disabled-color:       rgba($primary, .3) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-light-toggler-border-color: rgba($secondary, .1) !default;
+$navbar-light-toggler-border-color: rgba($primary, .1) !default;
 
 $navbar-light-brand-color:                $navbar-light-active-color !default;
 $navbar-light-brand-hover-color:          $navbar-light-active-color !default;
@@ -1228,7 +1228,7 @@ $pagination-border-radius-lg:       $border-radius-lg !default;
 // Placeholders
 
 // scss-docs-start placeholders
-$placeholder-opacity-max:           .5 !default;
+$placeholder-opacity-max:           .3 !default;
 $placeholder-opacity-min:           .2 !default;
 // scss-docs-end placeholders
 

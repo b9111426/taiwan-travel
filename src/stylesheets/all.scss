@@ -31,7 +31,10 @@
 @import "_mixin";
 @import "_base";
 @import "_layout";
+
 //components
+@import "./components/navbar";
 @import "./components/hamburgerIcon";
+@import "./components/banner";
 @import "./components/swiper"
 //pages

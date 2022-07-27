@@ -1,6 +1,6 @@
 
 import Swiper from '../../node_modules/swiper/swiper-bundle.min'
-export function swiper () {
+export function createSwiper () {
   return new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',
@@ -18,10 +18,10 @@ export function swiper () {
         return '<span class="' + className + '">' + (index + 1) + '</span>'
       }
     },
-    effect: 'fade'
+    effect: 'fade',
     // slide的樣式
-    // autoplay: { // 是否要自動撥放
-    //  delay: 4000
-    // }
+    autoplay: { // 是否要自動撥放
+      delay: 4000
+    }
   })
 }

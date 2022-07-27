@@ -1,0 +1,52 @@
+.banner{
+  &-content{
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    @extend %centerPoint;
+  }
+  &-title{
+    line-height: 1.5;
+    color: $light;
+
+    &-deco{
+      border-bottom: 2px solid $primary;
+    }
+  }
+  &-subTitle{
+    color: $light;
+
+    span{
+      font-size: 1.5rem;
+      margin-left: .5rem;
+    }
+  }
+  &-search{
+    width: 50vw;
+    height: 3rem;
+    margin-top: 15vh;
+    &-btn{
+      letter-spacing: .6rem;
+    }
+  }
+  &-filter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @extend %centerPoint;
+    width: 60vw;
+    height: 60vh;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(0,0,0,.3);
+    border-radius: 6px;
+    z-index: 1;
+  }
+}
+.bi-geo-alt-fill{
+  color: $primary;
+  margin-right: .5rem;
+}
+
+
+
