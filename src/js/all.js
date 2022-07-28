@@ -7,7 +7,8 @@ import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 // resource
 import '../stylesheets/all.scss'
 import { bannerPic } from './asset/bannerPicture'
-import { createSwiper } from './swiper'
+import { createSwiper } from './asset/swiper'
+import { renderBanner } from './banner'
 // import { sceneData } from './getData'
 
 // Html components
@@ -18,31 +19,11 @@ $(() => {
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
 
-  let str = ''
-  $.each(bannerPic, (idx, item) => {
-    str +=/* html */
-    `<div class="swiper-slide">
-        <img src="${item.url}" alt="">
-    </div>`
-    $('.swiper-wrapper').html(str)
-  })
-  const bannerContent = /* html */
-  `<div class="banner-content">
-      <h1 class="banner-title display-3 fw-bold">探索<span class="banner-title-deco">台灣之美</span><br>讓我們更親近這片土地</h1>
-          <h3 class="banner-subTitle  fw-lighter"><i class="bi bi-geo-alt-fill"></i>台灣旅遊景點導覽 <span>Taiwan Travel
-            Guide</span>
-          </h3>
-  <div class="banner-search input-group ">
-    <input type="text" class="form-control ps-3" placeholder="你想去哪裡? 請輸入關鍵字" aria-label="Recipient's username"
-      aria-describedby="button-addon2">
-    <button class="btn btn-primary" type="button" id="button-addon2"><i class="bi bi-search"></i><span
-        class="ms-3 banner-search-btn">收尋</span></button>
-  </div>
-</div>
-<div class="banner-filter"></div>
-`
-
-  $('#main').append(bannerContent)
-
-  const swiper = createSwiper()
+  renderBanner($, bannerPic)
+  const swiperOption1 = {
+    num: 1,
+    effect: 'fade',
+    delayTime: 3000
+  }
+  createSwiper(swiperOption1)
 })

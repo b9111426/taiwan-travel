@@ -1,16 +1,11 @@
-:root{
-  --swiper-navigation-size:30px;
-}
 .swiper{
-
-  &-loading{
+  &-loading-1{
     line-height:100vh ;
     margin: 0 auto;
     font-size: 2rem;
     color: #ccc;
   }
-  &-wrapper{
-    width: 100vw;
+  &-wrapper-1{
     height: 100vh;
     img{
       @extend %fullSpace;
@@ -24,22 +19,21 @@
   }
 
   &-button{
-    &-next,&-prev{
+    &-next-1,&-prev-1{
       opacity: .5;
       color: $primary;
-
       &:hover{
         opacity: 1;
       }
     }
   }
-  &-pagination{
+  &-pagination-1{
     text-align: end;
     padding-right: 30px;
     @include mobile(){
       display: none;
     }
-    &-bullet{
+    .swiper-pagination-bullet{
       width: 25px;
       height: 25px;
       text-align: center;
@@ -53,9 +47,5 @@
       }
     }
   }
-
 }
 
-.swiper-pagination-bullets.swiper-pagination-horizontal{
-  bottom: 30px;
-}

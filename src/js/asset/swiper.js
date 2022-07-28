@@ -1,27 +1,29 @@
+/* eslint-disable no-new */
 
-import Swiper from '../../node_modules/swiper/swiper-bundle.min'
-export function createSwiper () {
-  return new Swiper('.swiper', {
+import Swiper from 'swiper/swiper-bundle.min'
+export function createSwiper (option) {
+  return new Swiper('.swiper' + option.num, {
     // Optional parameters
     direction: 'horizontal',
     loop: true,
 
     // Navigation arrows
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
+      nextEl: '.swiper-button-next-' + option.num,
+      prevEl: '.swiper-button-prev-' + option.num
     },
+
     pagination: {
-      el: '.swiper-pagination',
+      el: '.swiper-pagination-' + option.num,
       clickable: true,
       renderBullet: function (index, className) {
         return '<span class="' + className + '">' + (index + 1) + '</span>'
       }
     },
-    effect: 'fade',
+    effect: option.effect,
     // slide的樣式
     autoplay: { // 是否要自動撥放
-      delay: 4000
+      delay: option.delayTime
     }
   })
 }

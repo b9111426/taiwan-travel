@@ -1,16 +1,25 @@
 
-
+#header{
+  @include mobile(){
+    height: $header-hight 
+  }
+}
 #main{
-  
   height: calc(2000px - $header-hight - $foot-hight  ) ;
   @include mobile(){
-    height: calc(2000px - $header-s-hight - $foot-hight )
+    height: calc(2000px - $header-hight  - $foot-hight )
   }
 }
 
-.footer{
+
+.eventBox{
+  margin-top: 3rem ;
+}
+
+
+#footer{
   height: $foot-hight;
-  &-content{
+}
+.footer-content{
     line-height: $foot-hight;
-  }  
 }

@@ -1,7 +1,6 @@
 import config from './config.js'
 import Qs from 'qs'
 import axios from 'axios'
-import $ from 'jquery'
 
 export const sceneData = []
 

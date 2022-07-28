@@ -10,5 +10,17 @@ body{
 img{
   vertical-align: bottom;
 }
+a{
+  text-decoration: none;
+}
+.clearFix::after{
+  content:'';
+  display:block;
+  clear:both;
+}
 
-
+.moreLink{
+  float: right;
+  font-size: 1rem;
+  line-height: 38px;
+}
