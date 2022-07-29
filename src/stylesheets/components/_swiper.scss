@@ -1,3 +1,4 @@
+
 .swiper{
   &-loading-1{
     line-height:100vh ;
@@ -7,6 +8,7 @@
   }
   &-wrapper-1{
     height: 100vh;
+    overflow-x: hidden;
     img{
       @extend %fullSpace;
           object-fit: cover;

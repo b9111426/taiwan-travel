@@ -5,6 +5,8 @@
   }
 }
 #main{
+
+
   height: calc(2000px - $header-hight - $foot-hight  ) ;
   @include mobile(){
     height: calc(2000px - $header-hight  - $foot-hight )
