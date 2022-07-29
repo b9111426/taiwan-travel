@@ -1,5 +1,11 @@
 
 .swiper{
+  &1{
+    position:relative;
+  }
+  &2{
+    position:relative;
+  }
   &-loading-1{
     line-height:100vh ;
     margin: 0 auto;
@@ -8,13 +14,22 @@
   }
   &-wrapper-1{
     height: 100vh;
-    overflow-x: hidden;
     img{
       @extend %fullSpace;
           object-fit: cover;
           object-position: center;
         }
   }
+
+  &-wrapper-2{
+    height: 320px;
+    img{
+      @extend %fullSpace;
+          object-fit: cover;
+          object-position: center;
+        }
+  }
+
 
   &-fade &-slide {
     transition-duration: 2000ms !important;
@@ -27,6 +42,9 @@
       &:hover{
         opacity: 1;
       }
+    }
+    &-next-2,&-prev-2{
+      color: red;
     }
   }
   &-pagination-1{

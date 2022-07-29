@@ -8,7 +8,7 @@ import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 import '../stylesheets/all.scss'
 import { bannerPic } from './asset/bannerPicture'
 import { createSwiper } from './asset/swiper'
-import { renderBanner } from './banner'
+import { renderBanner } from './asset/banner'
 // import { sceneData } from './getData'
 
 // Html components
@@ -20,10 +20,6 @@ $(() => {
   $('#footer').html(footerHtml)
 
   renderBanner($, bannerPic)
-  const swiperOption1 = {
-    num: 1,
-    effect: 'fade',
-    delayTime: 3000
-  }
-  createSwiper(swiperOption1)
+
+  createSwiper(1)
 })
