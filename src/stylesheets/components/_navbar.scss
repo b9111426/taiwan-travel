@@ -32,11 +32,11 @@
       z-index: -1;
       content:'';
       width: 4em;
-      height: 1em;
+      height: 1.1em;
       position: absolute;
-      top: 45%;
-      left: 0;
-      right: 0;
+      top: 38%;
+      left: .2em;
+ 
       @extend %centerPoint;
       background-color: $secondary;
       transform: skew(-45deg,0);

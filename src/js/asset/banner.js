@@ -1,5 +1,7 @@
+import { bannerPic } from '../asset/bannerPicture'
+import $ from 'jquery'
 
-export function renderBanner ($, bannerPic) {
+export function renderBanner () {
   let str = ''
   $.each(bannerPic, (idx, item) => {
     str +=/* html */
@@ -7,7 +9,8 @@ export function renderBanner ($, bannerPic) {
       <img class="img-fluid " src="${item.url}" alt="">
     </div>`
   })
-  $('.swiper-wrapper-1').html(str)
+
+  $('.swiper-wrapper:first').html(str)
 
   const bannerContent = /* html */
   `<div class="banner-content">

@@ -6,7 +6,6 @@ import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 
 // resource
 import '../stylesheets/all.scss'
-import { bannerPic } from './asset/bannerPicture'
 import { createSwiper } from './asset/swiper'
 import { renderBanner } from './asset/banner'
 // import { sceneData } from './getData'
@@ -19,7 +18,6 @@ $(() => {
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
 
-  renderBanner($, bannerPic)
-
-  createSwiper(1)
+  renderBanner()
+  createSwiper()
 })

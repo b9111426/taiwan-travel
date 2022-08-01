@@ -44,7 +44,19 @@
       }
     }
     &-next-2,&-prev-2{
-      color: red;
+      color: $primary;
+      
+
+      &::after{
+        opacity: 1;
+        padding: 1rem;
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255,.2);
+        box-shadow: 0 0 10px rgba(50, 50, 50, .7);
+        font-weight: bold;
+        line-height: 1;
+      }
+
     }
   }
   &-pagination-1{
