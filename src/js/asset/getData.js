@@ -10,29 +10,29 @@ function getToken () {
 function getAuthorizationHeader (callback) {
   const parameter = {
     grant_type: 'client_credentials',
-    client_id: atob(config.tdxClientId),
-    client_secret: atob(config.tdxClientSecret)
+    client_id: Buffer.from(config.tdxClientId, 'base64'),
+    client_secret: Buffer.from(config.tdxClientSecret, 'base64')
   }
-  const auth_url = 'https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token'
+  const authUrl = 'https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token'
 
   const options = {
     method: 'POST',
-    url: auth_url,
+    url: authUrl,
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     data: Qs.stringify(parameter)
   }
   axios(options)
     .then(res => {
       const accessToken = res.data
-      const { access_token, expires_in } = accessToken
-      document.cookie = `tdxToken=${access_token};max-age=${expires_in}`// 將token存入cookie
+      const { token, expiresIn } = accessToken
+      document.cookie = `tdxToken=${token};max-age=${expiresIn}`// 將token存入cookie
       callback()
     })
     .catch(err => console.log(err))
 }
 
 function getCityList () {
-  const apiUrl = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot?%24filter=contains(ScenicSpotID,\'C1_315081100H_000446\')&health=false&%24format=JSON'
+  const apiUrl = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity?%24top=40&%24format=JSON'
 
   const token = getToken() // 取token
 

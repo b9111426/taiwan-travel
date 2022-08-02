@@ -22,9 +22,16 @@
   }
 
   &-wrapper-2{
-    height: 320px;
+    height: 370px;
+    .card{
+      width: 23.5%;
+      margin-right: 2%;
+      &:last-child{
+        margin-right: 0;
+      }
+    }
     img{
-      @extend %fullSpace;
+          height: 50%;
           object-fit: cover;
           object-position: center;
         }
