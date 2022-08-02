@@ -1,29 +1,30 @@
 /* eslint-disable no-new */
 
 import Swiper from 'swiper/swiper-bundle.min'
+import $ from 'jquery'
+
 export function createSwiper () {
-  const swiperContainer = document.querySelectorAll('.swiper-container')
   const pageSetting = function (index, className) {
     return '<span class="' + className + '">' + (index + 1) + '</span>'
   }
-  swiperContainer.forEach((item, idx) => {
-    item.classList.add('swiper' + (idx + 1))
-    const wrapper = item.querySelector('.swiper-wrapper')
-    const prevBtn = item.querySelector('.swiper-button-prev')
-    const nextBtn = item.querySelector('.swiper-button-next')
-    const pagination = item.querySelector('.swiper-pagination')
+  $('.swiper-container').each(function (idx, item) {
+    this.classList.add('swiper' + (idx + 1))
+    const wrapper = $(this).find('.swiper-wrapper')
+    const prevBtn = $(this).find('.swiper-button-prev')
+    const nextBtn = $(this).find('.swiper-button-next')
+    const pagination = $(this).find('.swiper-pagination')
 
     if (wrapper) {
-      wrapper.classList.add('swiper-wrapper-' + (idx + 1))
+      wrapper.addClass('swiper-wrapper-' + (idx + 1))
     }
     if (prevBtn) {
-      prevBtn.classList.add('swiper-button-prev-' + (idx + 1))
+      prevBtn.addClass('swiper-button-prev-' + (idx + 1))
     }
     if (nextBtn) {
-      nextBtn.classList.add('swiper-button-next-' + (idx + 1))
+      nextBtn.addClass('swiper-button-next-' + (idx + 1))
     }
     if (pagination) {
-      pagination.classList.add('swiper-pagination-' + (idx + 1))
+      pagination.addClass('swiper-pagination-' + (idx + 1))
     }
 
     new Swiper('.swiper' + (idx + 1), {
