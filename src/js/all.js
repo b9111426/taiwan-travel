@@ -38,24 +38,29 @@ $(() => {
     const pageItems = filterPicData.slice(start - rows, end - rows)
     pageItems.forEach((item) => {
       str +=/* html */`
-      <div class="card h-100">
-      <img src="${item.Picture.PictureUrl1}" class="card-img-top" alt="...">
-      <div class="card-body d-flex flex-column">
-
-        <h4 class="card-text">${item.ActivityName}</h4>
-        <a class="mt-auto text-end" href="javascript:;">詳細介紹<i class="bi bi-chevron-right"></i></a>
+      <div class="col">
+        <div class="card h-100">
+          <img src="${item.Picture.PictureUrl1}" class="card-img-top" alt="...">
+          <div class="card-body d-flex flex-column">
+          <h4 class="card-text">${item.ActivityName}</h4>
+          <a class="mt-auto text-end" href="javascript:;">詳細介紹<i class="bi bi-chevron-right"></i></a>
+          </div>
+        </div>
       </div>
-    </div>`
+    `
     })
     return str
   }
 
   for (let i = 0; i < pages; i++) {
-    const el = document.createElement('div')
-    el.classList.add('swiper-slide', 'd-flex', 'justify-content-start')
+    const swiperEl = document.createElement('div')
+    swiperEl.classList.add('swiper-slide')
+    const colEl = document.createElement('div')
+    colEl.classList.add('swiper-wrapper-2-cards', 'row', 'row-cols-4')
+    swiperEl.appendChild(colEl)
     const cardList = createCard()
-    el.innerHTML = cardList
-    aa.appendChild(el)
+    colEl.innerHTML = cardList
+    aa.appendChild(swiperEl)
   }
   createSwiper() // 創建swiper實體
 })

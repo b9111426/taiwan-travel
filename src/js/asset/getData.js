@@ -24,8 +24,8 @@ function getAuthorizationHeader (callback) {
   axios(options)
     .then(res => {
       const accessToken = res.data
-      const { token, expiresIn } = accessToken
-      document.cookie = `tdxToken=${token};max-age=${expiresIn}`// 將token存入cookie
+      const { access_token, expires_in } = accessToken
+      document.cookie = `tdxToken=${access_token};max-age=${expires_in}`// 將token存入cookie
       callback()
     })
     .catch(err => console.log(err))

@@ -6,7 +6,7 @@
   &2{
     position:relative;
   }
-  &-loading-1{
+  &-loading{
     line-height:100vh ;
     margin: 0 auto;
     font-size: 2rem;
@@ -22,16 +22,12 @@
   }
 
   &-wrapper-2{
-    height: 370px;
-    .card{
-      width: 23.5%;
-      margin-right: 2%;
-      &:last-child{
-        margin-right: 0;
-      }
+    height: 400px;
+    &-cards{
+      height: 93%
     }
     img{
-          height: 50%;
+          height: 185px;
           object-fit: cover;
           object-position: center;
         }
@@ -52,8 +48,8 @@
     }
     &-next-2,&-prev-2{
       color: $primary;
-      
-
+      position:absolute;
+      top: 37%;
       &::after{
         opacity: 1;
         padding: 1rem;
@@ -84,6 +80,17 @@
       &:hover{
         opacity: 1;
       }
+    }
+  }
+  &-pagination-2{
+    bottom: 0 !important;
+    >.swiper-pagination-bullet{
+      width: .8rem;
+      height: .8rem;
+    }
+
+    >.swiper-pagination-bullet-active{
+      background-color: $primary;
     }
   }
 }

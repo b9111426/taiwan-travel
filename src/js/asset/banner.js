@@ -6,7 +6,7 @@ export function renderBanner () {
   $.each(bannerPic, (idx, item) => {
     str +=/* html */
     `<div class="swiper-slide">
-      <img class="img-fluid " src="${item.url}" alt="">
+      <img class="img-fluid" src="${item.url}" alt="">
     </div>`
   })
 
