@@ -6,7 +6,8 @@ import $ from 'jquery'
 export function createSwiper () {
   const pageSetting = function (index, className) {
     return '<span class="' + className + '">' + (index + 1) + '</span>'
-  }
+  } // 分頁按鈕添加號碼樣式
+
   $('.swiper-container').each(function (idx, item) {
     this.classList.add('swiper' + (idx + 1))
     const wrapper = $(this).find('.swiper-wrapper')
@@ -30,6 +31,28 @@ export function createSwiper () {
     new Swiper('.swiper' + (idx + 1), {
       direction: 'horizontal',
       loop: true,
+      slidesPerView: idx === 0 ? 1 : 4,
+      spaceBetween: idx === 0 ? 0 : 20,
+      slidesPerGroup: idx === 0 ? 1 : 4,
+
+      breakpoints: {
+        320: {
+          slidesPerView: idx === 0 ? 1 : 1,
+          spaceBetween: idx === 0 ? 0 : 3,
+          slidesPerGroup: idx === 0 ? 1 : 1
+        },
+        768: {
+          slidesPerView: idx === 0 ? 1 : 3,
+          spaceBetween: idx === 0 ? 0 : 5,
+          slidesPerGroup: idx === 0 ? 1 : 3
+        },
+        1024: {
+          slidesPerView: idx === 0 ? 1 : 4,
+          spaceBetween: idx === 0 ? 0 : 10,
+          slidesPerGroup: idx === 0 ? 1 : 4
+        }
+      },
+
       navigation: {
         nextEl: '.swiper-button-next-' + (idx + 1),
         prevEl: '.swiper-button-prev-' + (idx + 1)

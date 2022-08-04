@@ -1,11 +1,5 @@
 
 .swiper{
-  &1{
-    position:relative;
-  }
-  &2{
-    position:relative;
-  }
   &-loading{
     line-height:100vh ;
     margin: 0 auto;
@@ -23,8 +17,8 @@
 
   &-wrapper-2{
     height: 400px;
-    &-cards{
-      height: 93%
+    >.swiper-slide{
+      height: 93%;
     }
     img{
           height: 185px;
@@ -39,13 +33,6 @@
   }
 
   &-button{
-    &-next-1,&-prev-1{
-      opacity: .5;
-      color: $primary;
-      &:hover{
-        opacity: 1;
-      }
-    }
     &-next-2,&-prev-2{
       color: $primary;
       position:absolute;
