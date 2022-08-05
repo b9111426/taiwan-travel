@@ -27,22 +27,19 @@ $(() => {
   if (token === '') {
     getAuthorizationHeader()
   }
-
   getData(token, 'Activity', 40).then((res) => {
     renderBanner()// 渲染出banner標題和背景圖
-
     createSwiperCard(res.data) // 創建swiper card dom元素
   }).then(() => {
     createSwiper()// 創建swiper實體
+    $('.banner-search>input').trigger('focus')
   })
-
-  filterData(token, 'ScenicSpot', 30, 'DescriptionDetail', '熱門打卡').then(res => {
-    const str = createCard(res.data)
-    $('.hotPoint-content').html(str)
-  })
-
-  filterData(token, 'Restaurant', 30, 'Description', '老店').then(res => {
-    const str = createCard(res.data)
-    $('.tastyFood-content').html(str)
+  const data1 = filterData(token, 'ScenicSpot', 30, 'DescriptionDetail', '熱門打卡')
+  const data2 = filterData(token, 'Restaurant', 30, 'Description', '老店')
+  Promise.all([data1, data2]).then(res => {
+    const str1 = createCard(res[0].data)
+    const str2 = createCard(res[1].data)
+    $('.hotPoint-content').html(str1)
+    $('.tastyFood-content').html(str2)
   })
 })
