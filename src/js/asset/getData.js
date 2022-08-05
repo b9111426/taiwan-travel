@@ -1,20 +1,25 @@
 import axios from 'axios'
 
-export default {
-  data: {
-    apiUrl: 'https://tdx.transportdata.tw/api/basic/v2/Tourism/Activity?%24top=40&%24format=JSON'
-  },
+export function getData (token, section, top = 30) {
+  axios.defaults.headers.common.authorization = 'Bearer ' + token
 
-  getCityList (token) {
-    const instance = axios.create({
-      headers: {
-        authorization: 'Bearer ' + token
-      }
-    })
+  const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/${section}?$top=${top}&$format=JSON`
 
-    return instance({
-      method: 'get',
-      url: this.data.apiUrl
-    })
-  }
+  const instance = axios.create()
+  return instance({
+    method: 'get',
+    url: apiUrl
+  })
+}
+
+export function filterData (token, section, top = 30, option, content) {
+  axios.defaults.headers.common.authorization = 'Bearer ' + token
+  axios.defaults.method = 'get'
+  const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/${section}?$filter=contains(${option},'${content}')&$top=${top}&$format=JSON`
+
+  const instance = axios.create()
+  return instance({
+    method: 'get',
+    url: apiUrl
+  })
 }

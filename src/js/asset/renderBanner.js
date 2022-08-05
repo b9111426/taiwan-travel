@@ -1,4 +1,4 @@
-import { bannerPic } from '../asset/bannerPicture'
+import { bannerPic } from './bannerPicture'
 import $ from 'jquery'
 
 export function renderBanner () {

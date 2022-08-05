@@ -5,12 +5,7 @@
   }
 }
 #main{
-
-
-  height: calc(2000px - $header-hight - $foot-hight  ) ;
-  @include mobile(){
-    height: calc(2000px - $header-hight  - $foot-hight )
-  }
+margin-bottom: 120px;
 }
 
 
@@ -18,7 +13,6 @@
   margin-top: 3rem ;
   margin-bottom: .75rem;
 }
-
 
 #footer{
   height: $foot-hight;

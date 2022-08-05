@@ -29,10 +29,31 @@ body {
 a{
   text-decoration: none;
 }
+.object-fix{
+  object-fit: cover;
+  object-position: center;
+}
 
 .moreLink{
   line-height: 38px;
 }
+.card{
+  &-h{
+    height: 250px;
+  }
+  &-imageContainer{
+    height: 150px;
+  }
+  &-image{
+    @extend %fullSpace;
+
+    &:hover{
+      transform: scale(1.1);
+      transition: .3s all ease-in;
+    }
+  }
+}
+
 .bg-gray-100{
   background-color: $gray-100;
 }

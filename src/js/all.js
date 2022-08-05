@@ -8,9 +8,9 @@ import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 import '../stylesheets/all.scss'
 import { getAuthorizationHeader } from './asset/getToken'
 import { createSwiper } from './asset/swiper'
-import { renderBanner } from './asset/banner'
-import getData from './asset/getData'
-import { createSwiperCard } from './asset/createSwiperCard'
+import { renderBanner } from './asset/renderBanner'
+import { getData, filterData } from './asset/getData'
+import { createSwiperCard, createCard } from './asset/createCard'
 
 // Html components
 import headerHtml from '../html/components/header.html'
@@ -28,10 +28,21 @@ $(() => {
     getAuthorizationHeader()
   }
 
-  getData.getCityList(token).then((res) => {
+  getData(token, 'Activity', 40).then((res) => {
     renderBanner()// 渲染出banner標題和背景圖
+
     createSwiperCard(res.data) // 創建swiper card dom元素
   }).then(() => {
     createSwiper()// 創建swiper實體
+  })
+
+  filterData(token, 'ScenicSpot', 30, 'DescriptionDetail', '熱門打卡').then(res => {
+    const str = createCard(res.data)
+    $('.hotPoint-content').html(str)
+  })
+
+  filterData(token, 'Restaurant', 30, 'Description', '老店').then(res => {
+    const str = createCard(res.data)
+    $('.tastyFood-content').html(str)
   })
 })

@@ -63,7 +63,7 @@ export function createSwiper () {
         renderBullet: idx === 0 ? pageSetting : null
       },
       effect: idx === 0 ? 'fade' : 'slide',
-      autoplay: idx === 0 ? { delay: 1000 } : undefined
+      autoplay: idx === 0 ? { delay: 1000 } : { delay: 4000 }
     })
   })
 }
