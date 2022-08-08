@@ -8,7 +8,6 @@ import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 import '../stylesheets/all.scss'
 import { getAuthorizationHeader } from './asset/getToken'
 import { createSwiper } from './asset/swiper'
-import { renderBanner } from './asset/renderBanner'
 import { getData, filterData } from './asset/getData'
 import { createSwiperCard, createCard } from './asset/createCard'
 
@@ -28,7 +27,6 @@ $(() => {
     getAuthorizationHeader()
   }
   getData(token, 'Activity', 40).then((res) => {
-    renderBanner()// 渲染出banner標題和背景圖
     createSwiperCard(res.data) // 創建swiper card dom元素
   }).then(() => {
     createSwiper()// 創建swiper實體

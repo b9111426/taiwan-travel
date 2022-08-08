@@ -1,7 +1,7 @@
 .banner{
   &-content{
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     top: 50%;
     left: 50%;
     @extend %centerPoint;
@@ -55,7 +55,7 @@
     height: 60vh;
     backdrop-filter: blur(4px);
     border-radius: 6px;
-    z-index: 1;
+    z-index: 2;
   }
 }
 .bi-geo-alt-fill{

@@ -1,13 +1,17 @@
 
 #header{
   @include mobile(){
-    height: $header-hight 
+    height: calc($navbar-hl + $navbar-padding * 2)
   }
 }
 #main{
-margin-bottom: 120px;
+padding-bottom: 120px;
 }
-
+.banner{
+  &-container{
+    height: calc(100vh - ($navbar-hl + $navbar-padding * 2));
+  }
+}
 
 .titleBox{
   margin-top: 3rem ;
@@ -15,8 +19,7 @@ margin-bottom: 120px;
 }
 
 #footer{
-  height: $foot-hight;
+  padding:30px  0 ;
 }
-.footer-content{
-    line-height: $foot-hight;
-}
+
+

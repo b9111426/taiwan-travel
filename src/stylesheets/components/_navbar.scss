@@ -1,7 +1,4 @@
 .navbar{
-  z-index: 2;
-  right: 0;
-  left: 0;
   @include mobile(){
     padding:0 8px;
     border-bottom: 0;
@@ -18,34 +15,18 @@
 
 .nav{
   &-item{
-    margin-left: 20px;
+    margin-left: 2rem;
     margin-right: 2rem;
 
   }
   &-link{
-    line-height: $header-hight;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: $navbar-padding;
+    line-height: $navbar-hl;
+    padding-bottom: $navbar-padding;
     position: relative;
 
-    &::before{
-      z-index: -1;
-      content:'';
-      width: 4em;
-      height: 1.1em;
-      position: absolute;
-      top: 38%;
-      left: .2em;
- 
-      @extend %centerPoint;
-      background-color: $secondary;
-      transform: skew(-45deg,0);
-      @include mobile(){
-        display: none;
-      }
-    }
     @include mobile(){
-      line-height: $header-hight * .5;
+      line-height: $navbar-hl * .5;
     }
   }
 }

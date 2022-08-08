@@ -1,27 +1,14 @@
-
 .swiper{
-  &-loading{
-    line-height:100vh ;
-    margin: 0 auto;
-    font-size: 2rem;
-    color: #ccc;
+  &2{
+    height: 300px;
   }
-  &-wrapper-1{
-    height: 100vh;
-    img{
-      @extend %fullSpace;
-          object-fit: cover;
-          object-position: center;
-        }
-  }
-
   &-wrapper-2{
-    height: 400px;
+    
     >.swiper-slide{
-      height: 93%;
+
     }
     img{
-          height: 50%;
+          max-height: 200px;
         }
   }
 
