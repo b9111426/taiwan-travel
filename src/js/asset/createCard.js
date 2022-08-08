@@ -12,7 +12,7 @@ export function createSwiperCard (sceneData) {
     endTime = item.EndTime.split('T')
     const times = startTime[0].split('-').join('/') + ' - ' + endTime[0].split('-').join('/')
     str += /* html */`
-    <div class="swiper-slide ">
+    <div class="swiper-slide h-auto">
       <div class="card h-100 bg-gray-100">
           <img class="object-fix w-100" src="${item.Picture.PictureUrl1}" class="card-img-top" alt="...">
             <div class="card-body d-flex flex-column px-2">
