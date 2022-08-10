@@ -1,12 +1,12 @@
 
 
 #main{
-padding-top: $navbar-hl + $navbar-padding * 2;
+min-height: calc(100vh - ($navbar-hl + $navbar-padding * 2));
 padding-bottom: 120px;
 }
 .banner{
   &-container{
-    height: calc(100vh - ($navbar-hl + $navbar-padding * 2));
+    height: 100vh;
   }
 }
 

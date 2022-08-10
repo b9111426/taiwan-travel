@@ -14,10 +14,16 @@ import { createSwiperCard, createCard } from './asset/createCard'
 // Html components
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
+import breadcrumb from '../html/components/breadcrumb.html'
+import search from '../html/components/search.html'
+import popularTopics from '../html/components/popularTopics.html'
 
 $(() => {
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
+  $('#breadcrumb').html(breadcrumb)
+  $('#search').html(search)
+  $('#popularTopics').html(popularTopics)
 
   function getToken () {
     return document.cookie.replace(/(?:(?:^|.*;\s*)tdxToken\s*\=\s*([^;]*).*$)|^.*$/, '$1')// 從cookie取token
