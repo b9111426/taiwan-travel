@@ -39,7 +39,9 @@ export function createSwiper () {
         320: {
           slidesPerView: idx === 0 ? 1 : 1,
           spaceBetween: idx === 0 ? 0 : 3,
-          slidesPerGroup: idx === 0 ? 1 : 1
+          slidesPerGroup: idx === 0 ? 1 : 1,
+          autoplay: false
+
         },
         768: {
           slidesPerView: idx === 0 ? 1 : 3,
@@ -62,8 +64,8 @@ export function createSwiper () {
         clickable: true,
         renderBullet: idx === 0 ? pageSetting : null
       },
-      effect: idx === 0 ? 'fade' : 'slide'
-      // autoplay: idx === 0 ? { delay: 1000 } : { delay: 4000 }
+      effect: idx === 0 ? 'fade' : 'slide',
+      autoplay: idx === 0 ? { delay: 1000 } : { delay: 4000 }
     })
   })
 }

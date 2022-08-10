@@ -1,7 +1,12 @@
 
-import config from './config.js'
 import Qs from 'qs'
 import axios from 'axios'
+
+const config = {
+  tdxClientId: 'YjkxMTE0MjYtMjQyZTkwNGEtNThiZS00NjI4',
+  tdxClientSecret: 'ZWFiYzJmNTItMzIyYi00MjUxLTliNDUtMWZmY2FkN2UxNjU3'
+}
+
 export function getAuthorizationHeader () {
   const parameter = {
     grant_type: 'client_credentials',

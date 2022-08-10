@@ -15,15 +15,25 @@
       height: 60vh;
       border-radius: 6px;
       border: 1px solid rgba(255, 255, 255, 0.4);
+
+      @media (max-width: 992px){
+        width: 85vw;
+      }
+
+      @media (max-width: 576px){
+        display: none;
+      }
     }
   }
   &-title{
-    line-height: 1.5;
     color: $light;
 
     &-deco{
       border-bottom: 2px solid $primary;
     }
+  }
+  &-secondTitle{
+    font-size: .7em;
   }
   &-subTitle{
     color: $light;
@@ -36,10 +46,24 @@
   &-search{
     width: 50vw;
     height: 3rem;
+    @media (max-width: 576px){
+      width: 80vw;
+    }
+
     &-btn{
       letter-spacing: .6rem;
+      @media (max-width: 576px){
+        border-radius: 0;
+        text-align: center;
+        margin-top: .2rem;
+        width: 100% !important;
+        >i{
+          letter-spacing: 0;
+        }
+      }
     }
-    >input{
+    &-input{
+
       &:focus{
         transform: scaleY(.9);
         outline: 2px solid $primary;
@@ -56,6 +80,9 @@
     backdrop-filter: blur(4px);
     border-radius: 6px;
     z-index: 2;
+    @media (max-width: 992px){
+      width: 85vw;
+    }
   }
 }
 .bi-geo-alt-fill{

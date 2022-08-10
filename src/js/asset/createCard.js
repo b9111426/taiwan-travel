@@ -14,7 +14,9 @@ export function createSwiperCard (sceneData) {
     str += /* html */`
     <div class="swiper-slide h-auto">
       <div class="card h-100 bg-gray-100">
-          <img class="object-fix w-100" src="${item.Picture.PictureUrl1}" class="card-img-top" alt="...">
+        <div class="card-imageContainer overflow-hidden">
+          <img class="card-image object-fix w-100" src="${item.Picture.PictureUrl1}" class="card-img-top" alt="...">
+        </div>
             <div class="card-body d-flex flex-column px-2">
               <p class="text-secondary ">${times}</p>
               <h5 class="card-text mt-2 mb-3">${item.ActivityName}</h5>
