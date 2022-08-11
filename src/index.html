@@ -15,24 +15,28 @@
     <header id="header" class="fixed-top"></header>
     <!-- Slider main container -->
 
-    <div id="main">
+    <div id="main ">
       <div class="banner-container">
-        <div class="banner-content">
-          <h1 class="banner-title display-3 fw-bold text-center text-lg-start mb-3">探索<span
-              class="banner-title-deco">台灣之美</span><br><small class="banner-secondTitle">讓我們更親近這片土地</small></h1>
-          <h3 class="banner-subTitle  fw-lighter text-center text-lg-start"><i class="bi bi-geo-alt-fill"></i>台灣旅遊景點導覽
-            <span class="d-block d-lg-inline">Taiwan
-              Travel
-              Guide</span>
-          </h3>
-          <div class="banner-search input-group flex-wrap mt-7">
-            <input type="text" class="banner-search-input form-control ps-3 fs-5" placeholder="你想去哪裡? 請輸入關鍵字"
-              aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="banner-search-btn  btn btn-primary" type="button" id="button-addon2"><i
-                class="bi bi-search"></i><span class="ms-3 banner-search-btn">收尋</span></button>
+        <div class="banner-content d-flex flex-column  align-items-center px-3">
+          <div class="banner-text">
+            <h1 class="banner-title display-3 fw-bold text-center text-lg-start mb-3">探索<span
+                class="banner-title-deco ">台灣之美</span><br><small
+                class="banner-secondTitle d-none d-md-block">讓我們更親近這片土地</small>
+            </h1>
+            <h3 class="banner-subTitle  fw-lighter text-center text-lg-start"><i class="bi bi-geo-alt-fill"></i>台灣旅遊景點導覽
+              <span class="d-block d-lg-inline">Taiwan
+                Travel
+                Guide</span>
+            </h3>
           </div>
+
+          <searchComponent id="search" class="w-100"></searchComponent>
+
         </div>
-        <div class="banner-filter d-none d-sm-block"></div>
+
+        <div class="banner-filterBlur"></div>
+
+
         <div class="swiper-container swiper h-100">
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
@@ -56,6 +60,7 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
+
       <div class="container">
         <section class="">
           <div class="titleBox d-flex justify-content-between">

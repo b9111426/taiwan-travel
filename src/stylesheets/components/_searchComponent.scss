@@ -1,0 +1,12 @@
+
+.search{
+  &-btn{
+    letter-spacing: .6rem;
+  }
+  &-input{
+    &:focus{
+      transform: scaleY(.9);
+      outline: 2px solid $primary;
+    }
+  }
+}

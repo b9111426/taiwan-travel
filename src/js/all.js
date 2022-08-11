@@ -11,18 +11,18 @@ import { createSwiper } from './asset/swiper'
 import { getData, filterData } from './asset/getData'
 import { createSwiperCard, createCard } from './asset/createCard'
 
-// Html components
+// html components
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
 import breadcrumb from '../html/components/breadcrumb.html'
-import search from '../html/components/search.html'
+import searchComponent from '../html/components/searchComponent.html'
 import popularTopics from '../html/components/popularTopics.html'
 
 $(() => {
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
   $('#breadcrumb').html(breadcrumb)
-  $('#search').html(search)
+  $('#search').html(searchComponent)
   $('#popularTopics').html(popularTopics)
 
   function getToken () {
@@ -36,7 +36,6 @@ $(() => {
     createSwiperCard(res.data) // 創建swiper card dom元素
   }).then(() => {
     createSwiper()// 創建swiper實體
-    $('.banner-search>input').trigger('focus')
   })
   const data1 = filterData(token, 'ScenicSpot', 30, 'DescriptionDetail', '熱門打卡')
   const data2 = filterData(token, 'Restaurant', 30, 'Description', '老店')

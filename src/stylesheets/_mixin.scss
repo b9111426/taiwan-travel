@@ -5,11 +5,20 @@
 }
 
 @mixin pad{
-  @media (max-width: 992px){
+  @media (max-width: 768px){
     @content;
   }
 }
-
+@mixin laptop{
+  @media (max-width: 1200px){
+    @content;
+  }
+}
+@mixin x-laptop{
+  @media (max-width: 1400px){
+    @content;
+  }
+}
 
 %centerPoint{
   transform:translate(-50%,-50%)

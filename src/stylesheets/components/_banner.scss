@@ -1,29 +1,32 @@
 .banner{
+
+    &-container{
+      height: 100vh;
+    }
+
   &-content{
     position: absolute;
     z-index: 3;
     top: 50%;
     left: 50%;
     @extend %centerPoint;
-    &::before{
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      @extend %centerPoint;
-      width: 60vw;
-      height: 60vh;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+    width: 60vw;
 
-      @media (max-width: 992px){
-        width: 85vw;
-      }
-
-      @media (max-width: 576px){
-        display: none;
-      }
+    @include mobile(){
+      width: 90vw;
     }
+    @include pad(){
+      width: 90vw;
+    }
+    
+    @include laptop(){
+      width: 85vw;
+    }
+
+    @include x-laptop(){
+      width: 80vw;
+    }
+
   }
   &-title{
     color: $light;
@@ -33,6 +36,7 @@
     }
   }
   &-secondTitle{
+    margin-top: .7rem;
     font-size: .7em;
   }
   &-subTitle{
@@ -43,52 +47,45 @@
       margin-left: .5rem;
     }
   }
-  &-search{
-    width: 50vw;
-    height: 3rem;
-    @media (max-width: 576px){
-      width: 80vw;
-    }
 
-    &-btn{
-      letter-spacing: .6rem;
-      @media (max-width: 576px){
-        border-radius: 0;
-        text-align: center;
-        margin-top: .2rem;
-        width: 100% !important;
-        >i{
-          letter-spacing: 0;
-        }
-      }
-    }
-    &-input{
+  &-filterBlur{
 
-      &:focus{
-        transform: scaleY(.9);
-        outline: 2px solid $primary;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @extend %centerPoint;
+      width: 60vw;
+      height: 60vh;
+      backdrop-filter: blur(4px);
+      border-radius: 6px;
+      z-index: 2;
+      @include pad(){
+        width: 85vw;
       }
-    }
-  }
-  &-filter{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    @extend %centerPoint;
-    width: 60vw;
-    height: 60vh;
-    backdrop-filter: blur(4px);
-    border-radius: 6px;
-    z-index: 2;
-    @media (max-width: 992px){
-      width: 85vw;
-    }
+
+      @include mobile(){
+        display: none;
+      }
+
+      &::before{
+        content:'';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @extend %centerPoint;
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(0);
+
+      }
   }
 }
+
 .bi-geo-alt-fill{
   color: $primary;
   margin-right: .5rem;
 }
-
 
 
