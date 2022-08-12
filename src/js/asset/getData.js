@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+axios.defaults.method = 'get'
+
 export function getData (token, section, top = 30) {
   axios.defaults.headers.common.authorization = 'Bearer ' + token
 
@@ -7,7 +9,7 @@ export function getData (token, section, top = 30) {
 
   const instance = axios.create()
   return instance({
-    method: 'get',
+    headers: { authorization: 'Bearer ' + token },
     url: apiUrl
   })
 }
@@ -19,7 +21,17 @@ export function filterData (token, section, top = 30, option, content) {
 
   const instance = axios.create()
   return instance({
-    method: 'get',
+    headers: { authorization: 'Bearer ' + token },
+    url: apiUrl
+  })
+}
+
+export function getCity (token) {
+  const apiUrl = 'https://tdx.transportdata.tw/api/basic/v2/Basic/City?%24format=JSON'
+
+  const instance = axios.create()
+  return instance({
+    headers: { authorization: 'Bearer ' + token },
     url: apiUrl
   })
 }
