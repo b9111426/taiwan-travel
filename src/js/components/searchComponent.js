@@ -62,8 +62,8 @@ $(() => {
   })
 
   $('.search-input').trigger('focus')
-  $('.search-btn').on('click', function (e) {
-    e.stopPropagation()
-    window.location.href = '../../html/pages/searchPage.html'
-  })
+  // $('.search-btn').on('click', function (e) {
+  //  e.stopPropagation()
+  //  window.location.assign('../html/pages/searchPage.html')
+  // })
 })

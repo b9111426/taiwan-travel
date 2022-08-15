@@ -45,4 +45,6 @@ $(() => {
     $('.hotPoint-content').html(str1)
     $('.tastyFood-content').html(str2)
   })
+
+
 })
