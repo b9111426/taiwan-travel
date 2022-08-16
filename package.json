@@ -12,6 +12,10 @@
     "build": "parcel build src/index.html --public-url ./",
     "build-prod": "parcel build src/index.html"
   },
+  "staticFiles": {
+    "staticPath": "src/asset/images/topics",
+    " watcherGlob " : " ** " 
+  },
   "dependencies": {
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
@@ -24,6 +28,7 @@
     "@babel/preset-env": "latest",
     "eslint": "^8.20.0",
     "parcel-bundler": "^1.12.5",
+    "parcel-plugin-static-files-copy": "^2.6.0",
     "sass": "^1.53.0"
   }
 }

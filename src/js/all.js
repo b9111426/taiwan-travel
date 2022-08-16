@@ -1,6 +1,6 @@
 
 // library
-import $ from 'jquery'
+import $, { fn } from 'jquery'
 import '../../node_modules/swiper/swiper-bundle.min.css'
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 
@@ -9,7 +9,11 @@ import '../stylesheets/all.scss'
 import { getAuthorizationHeader } from './asset/getToken'
 import { createSwiper } from './asset/swiper'
 import { getData, filterData } from './asset/getData'
-import { createSwiperCard, createCard } from './asset/createCard'
+import { createSwiperCard, createCard, createTopicClass } from './asset/createCard'
+
+// component
+import searchFn from './components/searchComponent'
+import breadcrumbFn from './components/breadcrumb'
 
 // html components
 import headerHtml from '../html/components/header.html'
@@ -32,6 +36,23 @@ $(() => {
   if (token === '') {
     getAuthorizationHeader()
   }
+
+  searchFn.init()
+  const index = { url: '' }
+
+  Object.defineProperty(index, 'url', {
+    get: function () {
+    },
+    set: function () {
+      breadcrumbFn.init()
+      const str = createTopicClass()
+      $('.topics-container').html(str)
+    }
+  })
+
+  console.log(index.url)
+  if (window.location.href !== 'http://localhost:1234/') { index.url = window.location.href }
+
   getData(token, 'Activity', 40).then((res) => {
     createSwiperCard(res.data) // 創建swiper card dom元素
   }).then(() => {
@@ -45,6 +66,4 @@ $(() => {
     $('.hotPoint-content').html(str1)
     $('.tastyFood-content').html(str2)
   })
-
-
 })

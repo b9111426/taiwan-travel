@@ -40,11 +40,19 @@ a{
     height: 150px;
   }
   &-image{
+    cursor: pointer;
     &:hover{
       transform: scale(1.1);
       transition: .3s all ease-in;
     }
   }
+}
+.topics-title{
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @extend %centerPoint
 }
 
 .bg-gray-100{

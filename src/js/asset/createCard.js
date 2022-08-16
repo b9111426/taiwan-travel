@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import { location } from './location'
 export function createSwiperCard (sceneData) {
   const filterPicData = sceneData.filter((item) => {
     return item.Picture.PictureUrl1 !== undefined
@@ -60,5 +61,39 @@ export function createCard (sceneData) {
       `
     }
   })
+  return str
+}
+
+export function createTopicClass () {
+  const url = location()
+  let str = ''
+  const obj = {
+    scene: ['自然風景類', '觀光工廠類', '遊憩類', '休閒農業類', '生態類', '溫泉類', '古蹟類'],
+    activity: ['節慶活動', '自行車活動', '遊憩活動', '產業文化活動', '年度活動', '四季活動'],
+    food: ['地方特產', '中式美食', '甜點冰品', '異國料理', '伴手禮', '素食']
+  }
+  if (url === 'scenePage.html') {
+    create(1, obj.scene)
+  } else if (url === 'activityPage.html') {
+    create(8, obj.activity)
+  } else if (url === 'foodPage.html') {
+    create(14, obj.food)
+  }
+
+  function create (num, arr) {
+    arr.forEach((item, idx) => {
+      str += /* html */`
+      <div class="col">
+        <div class="card card-h h-100 ">
+          <div class="card-imageContainer overflow-hidden">
+            <img class="card-image object-fix w-100 h-100"  src="./topics-${idx + num}.jpg" class="card-img-top" alt="...">
+          </div>
+          <h3 class="topics-title">${item}</h3>
+        </div>
+      </div>
+      `
+    })
+  }
+
   return str
 }
