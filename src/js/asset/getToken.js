@@ -28,7 +28,7 @@ export function getAuthorizationHeader (callBack) {
       const accessToken = res.data
       const { access_token, expires_in } = accessToken
       document.cookie = `tdxToken=${access_token};max-age=${expires_in}`// 將token存入cookie
-      callBack()
+      callBack(access_token)
     })
     .catch(err => {
       console.log('取token失敗')

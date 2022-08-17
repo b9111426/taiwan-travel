@@ -48,8 +48,10 @@ $(() => {
     searchFn.init(token)
   }
 
-function renderCard(){
+function renderCard(token){
+  console.log('renderCard')
   getData(token, 'Activity', 40).then((res) => {
+    console.log('getData')
     createSwiperCard(res.data) // 創建swiper card dom元素
   }).then(() => {
     createSwiper()// 創建swiper實體
