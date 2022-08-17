@@ -64,6 +64,17 @@
     padding: 0;
     list-style: none;
     background-color: darken(#fff, 5);
+
+
+    &::-webkit-scrollbar{
+      width: 10px;
+    }
+    &::-webkit-scrollbar-thumb{
+      background-color: #aaa;
+      border-radius: 20%;
+    }
+
+
     li {
       margin: 0;
       padding: 12px 0;
@@ -78,5 +89,10 @@
         display: none;
       }
     }
+  }
+
+  &-overflowY{
+    max-height: 165px;
+    overflow-y: scroll;
   }
 }

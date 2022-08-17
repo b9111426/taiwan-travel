@@ -3,7 +3,6 @@ import { location } from '../asset/location'
 export default {
   init () {
     const url = location()
-
     const li = $('<li />', { class: 'breadcrumb-item' })
 
     switch (url) {

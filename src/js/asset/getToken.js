@@ -8,6 +8,7 @@ const config = {
 }
 
 export function getAuthorizationHeader () {
+  console.log('ajax取token')
   const parameter = {
     grant_type: 'client_credentials',
     client_id: Buffer.from(config.tdxClientId, 'base64'),
@@ -23,9 +24,13 @@ export function getAuthorizationHeader () {
   }
   axios(options)
     .then(res => {
+      console.log('token取得成功')
       const accessToken = res.data
       const { access_token, expires_in } = accessToken
       document.cookie = `tdxToken=${access_token};max-age=${expires_in}`// 將token存入cookie
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log('取token失敗')
+      console.log(err)
+    })
 }

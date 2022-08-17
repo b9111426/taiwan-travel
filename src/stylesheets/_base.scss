@@ -37,10 +37,11 @@ a{
     height: 250px;
   }
   &-imageContainer{
+    cursor: pointer;
     height: 150px;
+
   }
   &-image{
-    cursor: pointer;
     &:hover{
       transform: scale(1.1);
       transition: .3s all ease-in;
@@ -52,6 +53,7 @@ a{
   position: absolute;
   top: 50%;
   left: 50%;
+  cursor: pointer;
   @extend %centerPoint
 }
 

@@ -1,6 +1,6 @@
 
 // library
-import $, { fn } from 'jquery'
+import $ from 'jquery'
 import '../../node_modules/swiper/swiper-bundle.min.css'
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 
@@ -10,11 +10,12 @@ import { getAuthorizationHeader } from './asset/getToken'
 import { createSwiper } from './asset/swiper'
 import { getData, filterData } from './asset/getData'
 import { createSwiperCard, createCard, createTopicClass } from './asset/createCard'
+import { location } from './asset/location'
 
 // component
 import searchFn from './components/searchComponent'
 import breadcrumbFn from './components/breadcrumb'
-
+import popularTopicsFn from './components/popularTopics'
 // html components
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
@@ -32,26 +33,19 @@ $(() => {
   function getToken () {
     return document.cookie.replace(/(?:(?:^|.*;\s*)tdxToken\s*\=\s*([^;]*).*$)|^.*$/, '$1')// 從cookie取token
   }
-  const token = getToken()
+  let token = getToken()
   if (token === '') {
+    console.log('cookie沒有token')
     getAuthorizationHeader()
+    token = getToken()
   }
 
-  searchFn.init()
-  const index = { url: '' }
-
-  Object.defineProperty(index, 'url', {
-    get: function () {
-    },
-    set: function () {
-      breadcrumbFn.init()
-      const str = createTopicClass()
-      $('.topics-container').html(str)
-    }
-  })
-
-  console.log(index.url)
-  if (window.location.href !== 'http://localhost:1234/') { index.url = window.location.href }
+  const url = location()
+  if (window.location.href === 'http://localhost:1234/') { searchFn.init() } else if (url === 'scenePage.html' || url === 'activityPage.html' || url === 'foodPage.html') {
+    breadcrumbFn.init()
+    popularTopicsFn.init()
+    searchFn.init(token)
+  }
 
   getData(token, 'Activity', 40).then((res) => {
     createSwiperCard(res.data) // 創建swiper card dom元素
