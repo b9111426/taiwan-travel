@@ -36,8 +36,9 @@ $(() => {
   let token = getToken()
   if (token === '') {
     console.log('cookie沒有token')
-    getAuthorizationHeader()
-    token = getToken()
+    getAuthorizationHeader(renderCard)
+  }else{
+    renderCard()
   }
 
   const url = location()
@@ -47,6 +48,7 @@ $(() => {
     searchFn.init(token)
   }
 
+function renderCard(){
   getData(token, 'Activity', 40).then((res) => {
     createSwiperCard(res.data) // 創建swiper card dom元素
   }).then(() => {
@@ -59,5 +61,6 @@ $(() => {
     const str2 = createCard(res[1].data)
     $('.hotPoint-content').html(str1)
     $('.tastyFood-content').html(str2)
-  })
+    })
+  }
 })

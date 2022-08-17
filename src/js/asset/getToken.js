@@ -7,7 +7,7 @@ const config = {
   tdxClientSecret: 'ZWFiYzJmNTItMzIyYi00MjUxLTliNDUtMWZmY2FkN2UxNjU3'
 }
 
-export function getAuthorizationHeader () {
+export function getAuthorizationHeader (callBack) {
   console.log('ajax取token')
   const parameter = {
     grant_type: 'client_credentials',
@@ -28,6 +28,7 @@ export function getAuthorizationHeader () {
       const accessToken = res.data
       const { access_token, expires_in } = accessToken
       document.cookie = `tdxToken=${access_token};max-age=${expires_in}`// 將token存入cookie
+      callBack()
     })
     .catch(err => {
       console.log('取token失敗')
