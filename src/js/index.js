@@ -2,7 +2,7 @@
 // library
 import $ from 'jquery'
 import '../../node_modules/swiper/swiper-bundle.min.css'
-import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
+import 'bootstrap/dist/js/bootstrap.bundle.min'
 
 // resource
 import '../stylesheets/all.scss'
@@ -10,12 +10,10 @@ import getToken from './asset/getToken'
 import { createSwiper } from './asset/swiper'
 import { getData, filterData } from './asset/getData'
 import { createSwiperCard, createCard } from './asset/createCard'
-import { location } from './asset/location'
 
 // component
 import searchFn from './components/searchComponent'
-import breadcrumbFn from './components/breadcrumb'
-import popularTopicsFn from './components/popularTopics'
+
 // html components
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
@@ -29,7 +27,7 @@ $(() => {
   $('#breadcrumb').html(breadcrumb)
   $('#search').html(searchComponent)
   $('#popularTopics').html(popularTopics)
-
+  searchFn.init()
   // 判斷是否有token
   if (getToken.getCookieToken() === '') {
     const tokenPromise = getToken.getAuthorizationHeader()
@@ -43,14 +41,6 @@ $(() => {
       })
   } else {
     renderCard(getToken.getCookieToken())
-  }
-
-  // 判斷分頁，渲染分頁
-  const url = location()
-  if (window.location.href === 'http://localhost:1234/') { searchFn.init() } else if (url === 'scenePage.html' || url === 'activityPage.html' || url === 'foodPage.html') {
-    breadcrumbFn.init()
-    popularTopicsFn.init()
-    searchFn.init(getToken.getCookieToken())
   }
 
   // 渲染首頁畫面
