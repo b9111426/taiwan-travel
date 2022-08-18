@@ -7,16 +7,14 @@ export default {
 
     switch (url) {
     case 'scenePage.html':
-      $('<a/>', { text: '探索景點' }).appendTo(li)
-      $('.breadcrumb').append(li)
+      $('<li/>', { class: 'breadcrumb-item breadcrumb-now', text: '探索景點' }).appendTo('.breadcrumb')
+
       break
     case 'activityPage.html':
-      $('<a/>', { text: '節慶活動' }).appendTo(li)
-      $('.breadcrumb').append(li)
+      $('<li/>', { class: 'breadcrumb-item breadcrumb-now', text: '節慶活動' }).appendTo('.breadcrumb')
       break
     case 'foodPage.html':
-      $('<a/>', { text: '品嚐美食' }).appendTo(li)
-      $('.breadcrumb').append(li)
+      $('<li/>', { class: 'breadcrumb-item breadcrumb-now', text: '品嚐美食' }).appendTo('.breadcrumb')
       break
     }
   }

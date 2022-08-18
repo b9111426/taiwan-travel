@@ -17,16 +17,15 @@ import searchFn from './components/searchComponent'
 // html components
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
-import breadcrumb from '../html/components/breadcrumb.html'
 import searchComponent from '../html/components/searchComponent.html'
-import popularTopics from '../html/components/popularTopics.html'
+import card from '../html/components/card.html'
 
 $(() => {
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
-  $('#breadcrumb').html(breadcrumb)
   $('#search').html(searchComponent)
-  $('#popularTopics').html(popularTopics)
+  $('.tastyFood, .hotPoint').html(card)
+
   searchFn.init()
   // 判斷是否有token
   if (getToken.getCookieToken() === '') {
@@ -52,8 +51,14 @@ $(() => {
       createSwiperCard(res[0].data) // 創建swiper card dom元素
       const str1 = createCard(res[1].data)
       const str2 = createCard(res[2].data)
-      $('.hotPoint-content').html(str1)
-      $('.tastyFood-content').html(str2)
+
+      $('.hotPoint').find('.sectionTitle').text('熱門打卡景點')
+      $('.hotPoint').find('.moreLink').text('查看更多景點').attr('href', '../scenePage.html')
+      $('.hotPoint').find('.card-content').html(str1)
+
+      $('.tastyFood').find('.sectionTitle').text('一再回訪美食')
+      $('.tastyFood').find('.moreLink').text('查看更多美食').attr('href', '../foodPage.html')
+      $('.tastyFood').find('.card-content').html(str2)
     }).then(() => {
       createSwiper()// 創建swiper實體
     })
