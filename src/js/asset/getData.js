@@ -14,15 +14,16 @@ export function getData (token, section, top = 30) {
   })
 }
 
-export function filterData (token, section, top = 30, option, content) {
+export function filterData (token, section, top , option, content) {
   axios.defaults.headers.common.authorization = 'Bearer ' + token
   axios.defaults.method = 'get'
   const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/${section}?$filter=contains(${option},'${content}')&$top=${top}&$format=JSON`
+  const allUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/${section}?$filter=contains(${option},'${content}')&$format=JSON`
 
   const instance = axios.create()
   return instance({
     headers: { authorization: 'Bearer ' + token },
-    url: apiUrl
+    url: top? apiUrl : allUrl
   })
 }
 

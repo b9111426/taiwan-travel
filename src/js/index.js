@@ -25,8 +25,8 @@ $(() => {
   $('#footer').html(footerHtml)
   $('#search').html(searchComponent)
   $('.tastyFood, .hotPoint').html(card)
-
   searchFn.init()
+  
   // 判斷是否有token
   if (getToken.getCookieToken() === '') {
     const tokenPromise = getToken.getAuthorizationHeader()

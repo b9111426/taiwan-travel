@@ -2,6 +2,8 @@
 import $ from 'jquery'
 import { getCity } from '../asset/getData'
 import { changeSelection } from '../asset/changeSelection'
+import getToken from '../asset/getToken'
+import { filterData } from '../asset/getData'
 
 export default {
   cityData: [],
@@ -10,12 +12,7 @@ export default {
   },
   changeSelect (token) {
     if (token) {
-      console.log('yes')
-
       getCity(token).then((res) => {
-        res.data.forEach((item) => {
-          this.cityData.push(item)
-        })
         changeSelection(res.data)
       })
     } else {
@@ -26,8 +23,17 @@ export default {
   search () {
     $('.search-btn').on('click', function (e) {
       e.stopPropagation()
-      const val = $('select').val()
-      window.location.assign(`http://localhost:1234/${val}`)
+      const themeVal = $('select').val()
+      const location = $('select').attr('data-id')
+      
+      const val = $('.search-input').val()
+      const token = getToken.getCookieToken()
+      const searchData = filterData(token, themeVal, 30, themeVal+'Name', val)
+      searchData.then((res)=>{
+        console.log(res.data)
+        localStorage.setItem('filterData',JSON.stringify(res.data))
+        window.location.assign(`http://localhost:1234/${location}`)
+      })
     })
   },
   init (token) {

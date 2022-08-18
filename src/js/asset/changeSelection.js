@@ -26,7 +26,8 @@ export function changeSelection (data) {
     for (let i = 0; i < numberOfOptions; i++) {
       $('<li />', {
         text: selectEl.children('option').eq(i).text(),
-        rel: selectEl.children('option').eq(i).val()
+        rel: selectEl.children('option').eq(i).val(),
+        'data-id' :selectEl.children('option').eq(i).attr('data-id')
       }).appendTo(listEl)
     }
 
@@ -41,6 +42,7 @@ export function changeSelection (data) {
       e.stopPropagation()
       styledSelect.text($(this).text()).removeClass('active')
       selectEl.val($(this).attr('rel'))
+      selectEl.attr('data-id',$(this).attr('data-id'))
       listEl.hide()
     })
 
