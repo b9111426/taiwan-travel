@@ -31,8 +31,8 @@ export default {
       const searchData = filterData(token, themeVal, 30, themeVal+'Name', val)
       searchData.then((res)=>{
         console.log(res.data)
-        localStorage.setItem('filterData',JSON.stringify(res.data))
-        window.location.assign(`http://localhost:1234/${location}`)
+        sessionStorage.setItem('filterData',JSON.stringify(res.data))
+        window.location.assign('./search.html')
       })
     })
   },
