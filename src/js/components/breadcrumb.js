@@ -3,7 +3,6 @@ import { location } from '../asset/location'
 export default {
   init () {
     const url = location()
-    const li = $('<li />', { class: 'breadcrumb-item' })
 
     switch (url) {
     case 'scenePage.html':
@@ -16,6 +15,13 @@ export default {
     case 'foodPage.html':
       $('<li/>', { class: 'breadcrumb-item breadcrumb-now', text: '品嚐美食' }).appendTo('.breadcrumb')
       break
+
+    case 'searchPage.html':{
+      const data = { ScenicSpot: '探索景點', Activity: '節慶活動', Restaurant: '品嘗美食' }
+      const theme = sessionStorage.getItem('breadcrumb')
+      $('<li/>', { class: 'breadcrumb-item breadcrumb-now', text: data[theme] }).appendTo('.breadcrumb')
+      break
+    }
     }
   }
 }

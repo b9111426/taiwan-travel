@@ -23,13 +23,11 @@ export default {
     $('.search-btn').on('click', function (e) {
       e.stopPropagation()
       const themeVal = $('select').val()
-      const location = $('select').attr('data-id')
-
       const val = $('.search-input').val()
       const token = getToken.getCookieToken()
-      const searchData = filterData(token, themeVal, 30, themeVal + 'Name', val)
+      sessionStorage.setItem('breadcrumb', themeVal)
+      const searchData = filterData(token, themeVal, 30, 'Description', val)
       searchData.then((res) => {
-        console.log(res.data)
         sessionStorage.setItem('filterData', JSON.stringify(res.data))
         window.location.assign('./searchPage.html')
       })

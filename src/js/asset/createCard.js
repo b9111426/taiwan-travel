@@ -35,17 +35,19 @@ export function createSwiperCard (sceneData) {
   $('.swiper-wrapper').eq(1).html(str)
 }
 
-export function createCard (sceneData) {
-  const filterPicData = sceneData.filter((item) => {
-    return item.Picture.PictureUrl1 !== undefined && item.City !== undefined
+export function createCard (data) {
+  const filterPicData = data.filter((item) => {
+    return item.Picture.PictureUrl1 !== undefined
   }) // 過濾沒有圖片資料
 
   let str = ''
   filterPicData.forEach((item) => {
-    const filterPic = item.Picture.PictureUrl1.split('/').indexOf('travel.nantou.gov.tw')
-    // 濾掉圖片網址travel.nantou.gov.tw
+    const Pic1 = item.Picture.PictureUrl1.split('/').indexOf('travel.nantou.gov.tw')
+    const Pic2 = item.Picture.PictureUrl1.split('/').indexOf('210.69.151.212')
+    // 濾掉沒圖片的網址
+    const city = item.Address.split('').slice(0, 3).join('')
 
-    if (filterPic === -1) {
+    if (Pic1 === -1 && Pic2 === -1) {
       str += /* html */`
       <div class="col">
         <div class="card card-h h-100">
@@ -53,8 +55,8 @@ export function createCard (sceneData) {
             <img class="card-image object-fix w-100 h-100"  src="${item.Picture.PictureUrl1}" class="card-img-top" alt="...">
           </div>
           <div class="card-body d-flex flex-column overflow-hidden">
-            <h5 class="card-text">${item.ScenicSpotName || item.RestaurantName}</h5>
-            <p class="text-secondary mt-auto"><i class="bi bi-geo-alt"></i>${item.City}</p>
+            <h5 class="card-text">${item.ScenicSpotName || item.RestaurantName || item.ActivityName}</h5>
+            <p class="text-secondary mt-auto"><i class="bi bi-geo-alt"></i>${item.City || city}</p>
           </div>
         </div>
       </div>
