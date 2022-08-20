@@ -1,11 +1,9 @@
 
 // library
 import $ from 'jquery'
-import '../../node_modules/swiper/swiper-bundle.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min'
+// import 'bootstrap/dist/js/bootstrap.bundle.min'
 
 // resource
-import '../stylesheets/all.scss'
 import getToken from './asset/getToken'
 
 // component
@@ -26,7 +24,7 @@ $(() => {
   $('#search').html(searchComponent)
   $('#popularTopics').html(popularTopics)
 
-  breadcrumbFn.init()
   popularTopicsFn.init()
+  breadcrumbFn.init()
   searchFn.init(getToken.getCookieToken())
 })

@@ -1,11 +1,10 @@
 
 // library
 import $ from 'jquery'
-import '../../node_modules/swiper/swiper-bundle.min.css'
+// import '../../node_modules/swiper/swiper-bundle.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 
 // resource
-import '../stylesheets/all.scss'
 import getToken from './asset/getToken'
 import { createSwiper } from './asset/swiper'
 import { getData, filterData } from './asset/getData'
@@ -26,7 +25,7 @@ $(() => {
   $('#search').html(searchComponent)
   $('.tastyFood, .hotPoint').html(card)
   searchFn.init()
-  
+
   // 判斷是否有token
   if (getToken.getCookieToken() === '') {
     const tokenPromise = getToken.getAuthorizationHeader()
