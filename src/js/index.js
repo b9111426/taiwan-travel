@@ -8,7 +8,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min'
 import getToken from './asset/getToken'
 import { createSwiper } from './asset/swiper'
 import { getData, filterData } from './asset/getData'
-import { createSwiperCard, createCard } from './asset/createCard'
+import { createSwiperCard, createCard, filterCardData } from './asset/createCard'
 
 // component
 import searchFn from './components/searchComponent'
@@ -47,9 +47,13 @@ $(() => {
     const data2 = filterData(token, 'ScenicSpot', 30, 'DescriptionDetail', '熱門打卡')
     const data3 = filterData(token, 'Restaurant', 30, 'Description', '老店')
     Promise.all([data1, data2, data3]).then(res => {
-      createSwiperCard(res[0].data) // 創建swiper card dom元素
-      const str1 = createCard(res[1].data)
-      const str2 = createCard(res[2].data)
+      const filterCard1 = filterCardData(res[0].data)
+      const filterCard2 = filterCardData(res[1].data)
+      const filterCard3 = filterCardData(res[2].data)
+
+      createSwiperCard(filterCard1) // 創建swiper card dom元素
+      const str1 = createCard(filterCard2)
+      const str2 = createCard(filterCard3)
 
       $('.hotPoint').find('.sectionTitle').text('熱門打卡景點')
       $('.hotPoint').find('.moreLink').text('查看更多景點').attr('href', '../scenePage.html')

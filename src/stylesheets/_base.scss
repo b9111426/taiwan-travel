@@ -33,9 +33,6 @@ a{
   line-height: 38px;
 }
 .card{
-  &-h{
-    height: 250px;
-  }
   &-imageContainer{
     cursor: pointer;
     height: 150px;
@@ -61,6 +58,9 @@ a{
   background-color: $gray-100;
 }
 
+.text-gray{
+  color:$gray-400 !important;
+}
 .breadcrumb-now{
   color: $gray-500;
 }
