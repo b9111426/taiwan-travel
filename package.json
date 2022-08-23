@@ -13,7 +13,10 @@
     "build-prod": "parcel build src/index.html"
   },
   "staticFiles": {
-    "staticPath": ["src/asset/images/topics","src/search.html"],
+    "staticPath": [
+      "src/asset/images/topics",
+      "src/search.html"
+    ],
     " watcherGlob ": " ** "
   },
   "dependencies": {

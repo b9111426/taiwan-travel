@@ -3,7 +3,8 @@ import { createCard } from '../asset/createCard'
 export function renderPages (data) {
   const pageData = {
     pageItems : 16,
-    currentPage :1
+    currentPage :1,
+    range:[]
   }
 
     const rows = Math.ceil(data.length / pageData.pageItems)
@@ -35,13 +36,25 @@ export function renderPages (data) {
       }
     }else if(pageData.currentPage>5 && pageData.currentPage<rows-4){
       $('.transition-item-js').show()
-      $('.pagination').find('.pages-js').remove()
+      console.log(pageData.range);
 
-      for (let idx = 0; idx < 5 ; idx++) {
-        const aLink = $('<a/>', { class: 'page-link link-secondary', href: 'javascript:;', text: pageData.currentPage+idx })
-        const item = $('<li/>', { class: 'page-item pages-js' }).append(aLink)
-        $('.transition-item-js').eq(1).before(item)
-        }
+      const isRange = pageData.range.indexOf(pageData.currentPage)
+      console.log(isRange);
+      if(isRange === -1){
+        pageData.range = []
+        $('.pagination').find('.pages-js').remove()
+      
+        for (let idx = 0; idx < 5 ; idx++) {
+          const aLink = $('<a/>', { class: 'page-link link-secondary', href: 'javascript:;', text: pageData.currentPage+idx })
+          const item = $('<li/>', { class: 'page-item pages-js' }).append(aLink)
+          $('.transition-item-js').eq(1).before(item)
+          }
+
+          $('.pages-js>a').each((idx,item)=>{
+            pageData.range.push(+item.innerHTML)
+          }); 
+      }
+
       
 
     }else{
@@ -74,7 +87,7 @@ export function renderPages (data) {
   }
   //替換樣式
   function changeClass () {
-    const select = $('.pagination').children().filter(function(){
+    const select = $('.page-item').filter(function(){
       return +$(this).text() === pageData.currentPage
     })
     select.addClass('active').siblings().removeClass('active')
