@@ -26,8 +26,9 @@ export default {
       const val = $('.search-input').val()
       const token = getToken.getCookieToken()
       sessionStorage.setItem('breadcrumb', themeVal)
-      const searchData = filterData(token, themeVal, 30, 'Description', val)
+      const searchData = filterData(token, themeVal, '', 'Description', val)
       searchData.then((res) => {
+        console.log(res.data);
         sessionStorage.setItem('filterData', JSON.stringify(res.data))
         window.location.assign('./searchPage.html')
       })
