@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "clean": "rimraf dist",
-    "start": "parcel src/index.html src/searchPage.html",
+    "start": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url ./",
     "build-prod": "parcel build src/index.html"
   },
