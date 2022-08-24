@@ -4,11 +4,11 @@ export function renderPages (data) {
   const pageData = {
     pageItems : 16,
     currentPage :1,
-    range:[]
+    range:[],
+    allData:[]
   }
-
-    const rows = Math.ceil(data.length / pageData.pageItems)
-    console.log('rows:',rows);
+  pageData.allData = data
+    const rows = Math.ceil(pageData.allData.length / pageData.pageItems)
     const transition = $('<li/>', { class: 'page-item transition-item-js'}).append($('<a/>', { class: 'page-link link-secondary disabled', href: 'javascript:;', text: '...' }))
     const transition2 = transition.clone()
 
@@ -58,7 +58,7 @@ export function renderPages (data) {
     }else if(pageData.currentPage>5 && pageData.currentPage<rows-4){
       $('.transition-item-js').show()
       const isRange = pageData.range.indexOf(pageData.currentPage)
-      if(isRange === -1){
+      if(isRange === -1||isRange === 0){
         pageData.range = []
         $('.pagination').find('.pages-js').remove()
       
@@ -97,7 +97,7 @@ export function renderPages (data) {
   function renderCard () {
     const start = (pageData.currentPage-1) * pageData.pageItems
     const end = start + pageData.pageItems
-    const currentPageData = data.slice(start, end)
+    const currentPageData = pageData.allData.slice(start, end)
     const str = createCard(currentPageData)
     $('.searchResult').find('.card-content').html(str)
   }
