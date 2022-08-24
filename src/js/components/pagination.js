@@ -20,7 +20,7 @@ export function renderPages (data) {
     const lastItem =$('<li/>', { class: 'page-item  lastPage-js' }).append(lastALink)
     $('.pagination').children('.page-item').last().before(lastItem)
     
-    if(rows<=6){
+    if(rows<=5){
       for (let idx = 1; idx < rows-1 ; idx++) {
         const aLink = $('<a/>', { class: 'page-link link-secondary', href: 'javascript:;', text: idx+1 })
         const item = $('<li/>', { class: 'page-item pages-js' }).append(aLink)
@@ -32,7 +32,7 @@ export function renderPages (data) {
       e.preventDefault()
       pageData.currentPage = +$(this).text()
       renderCard()
-      if(rows>6){reRenderPages()}
+      if(rows>5){reRenderPages()}
       changeClass()
     })
 
@@ -45,24 +45,24 @@ export function renderPages (data) {
     $('.firstPage-js').after(transition)
     $('.lastPage-js').before(transition2)
 
-    if(pageData.currentPage<=5){
+    if(pageData.currentPage<=4){
       $('.pagination').find('.pages-js').remove()
       $('.transition-item-js').eq(0).hide()
       $('.transition-item-js').eq(1).show()
 
-      for (let idx = 1; idx < 5 ; idx++) {
+      for (let idx = 1; idx < 4 ; idx++) {
         const aLink = $('<a/>', { class: 'page-link link-secondary', href: 'javascript:;', text: idx+1 })
         const item = $('<li/>', { class: 'page-item pages-js' }).append(aLink)
         $('.pagination').children().eq(idx+1).after(item)
       }
-    }else if(pageData.currentPage>5 && pageData.currentPage<rows-4){
+    }else if(pageData.currentPage>4 && pageData.currentPage<rows-3){
       $('.transition-item-js').show()
       const isRange = pageData.range.indexOf(pageData.currentPage)
       if(isRange === -1||isRange === 0){
         pageData.range = []
         $('.pagination').find('.pages-js').remove()
       
-        for (let idx = 0; idx < 5 ; idx++) {
+        for (let idx = 0; idx < 3 ; idx++) {
           const aLink = $('<a/>', { class: 'page-link link-secondary', href: 'javascript:;', text: pageData.currentPage+idx })
           const item = $('<li/>', { class: 'page-item pages-js' }).append(aLink)
           $('.transition-item-js').eq(1).before(item)
@@ -77,7 +77,7 @@ export function renderPages (data) {
       $('.transition-item-js').eq(1).hide()
       $('.transition-item-js').eq(0).show()
       $('.pagination').find('.pages-js').remove()
-      for (let idx = 4; idx > 0; idx--) {
+      for (let idx = 3; idx > 0; idx--) {
         const aLink = $('<a/>', { class: 'page-link link-secondary', href: 'javascript:;', text: rows-idx })
         const item = $('<li/>', { class: 'page-item pages-js' }).append(aLink)
         $('.transition-item-js').eq(1).before(item)
