@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import { createCard } from '../asset/createCard'
+
 export function renderPages (data) {
   const pageData = {
     pageItems : 16,
@@ -96,10 +97,11 @@ export function renderPages (data) {
 
   // 渲染出卡片
   function renderCard () {
+    const theme = JSON.parse(sessionStorage.getItem('breadcrumb'))
     const start = (pageData.currentPage-1) * pageData.pageItems
     const end = start + pageData.pageItems
     const currentPageData = pageData.allData.slice(start, end)
-    const str = createCard(currentPageData)
+    const str = createCard(currentPageData,theme)
     $('.searchResult').find('.card-content').html(str)
   }
   

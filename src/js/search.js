@@ -5,6 +5,7 @@ import $ from 'jquery'
 // resource
 import getToken from './asset/getToken'
 import { filterCardData } from './asset/createCard'
+import { cardEvent } from './asset/cardEvent'
 // component
 import searchFn from './components/searchComponent'
 import breadcrumbFn from './components/breadcrumb'
@@ -36,9 +37,5 @@ $(() => {
   renderPages(filterData)
   breadcrumbFn.init()
   searchFn.init(getToken.getCookieToken())
-
-  $('.cardContainer').find('.card').on('click',()=>{
-    window.location.assign('./contentPage.html')
-  })
-  
+  cardEvent()
 })
