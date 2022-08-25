@@ -12,18 +12,7 @@
     width: 60vw;
 
     @include mobile(){
-      width: 90vw;
-    }
-    @include pad(){
-      width: 90vw;
-    }
-    
-    @include laptop(){
-      width: 85vw;
-    }
-
-    @include x-laptop(){
-      width: 80vw;
+      width: 100vw;
     }
 
   }

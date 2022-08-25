@@ -36,7 +36,7 @@ export function renderPages (data) {
       changeClass()
     })
 
-    if(rows === 1 ){
+    if(rows === 1 ||rows === 0 ){
       $('.lastPage-js').remove()
     }
 

@@ -28,14 +28,15 @@ export default {
       sessionStorage.setItem('breadcrumb', themeVal)
       const searchData = filterData(token, themeVal, '', 'Description', val)
       searchData.then((res) => {
-        console.log(res.data);
         sessionStorage.setItem('filterData', JSON.stringify(res.data))
         window.location.assign('./searchPage.html')
       })
     })
   },
   init (token) {
-    this.focus()
+    if(window.location.pathname === '/index.html'){
+      this.focus()
+    }
     this.changeSelect(token)
     this.search()
   }

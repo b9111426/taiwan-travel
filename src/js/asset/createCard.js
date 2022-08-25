@@ -61,11 +61,11 @@ export function createTopicClass () {
     activity: ['節慶活動', '自行車活動', '遊憩活動', '產業文化活動', '年度活動', '四季活動'],
     food: ['地方特產', '中式美食', '甜點冰品', '異國料理', '伴手禮', '素食']
   }
-  if (url === 'scenePage.html') {
+  if (url === 'scenePage') {
     create(1, obj.scene)
-  } else if (url === 'activityPage.html') {
+  } else if (url === 'activityPage') {
     create(8, obj.activity)
-  } else if (url === 'foodPage.html') {
+  } else if (url === 'foodPage') {
     create(14, obj.food)
   }
 

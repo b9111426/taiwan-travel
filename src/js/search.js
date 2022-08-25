@@ -28,6 +28,7 @@ $(() => {
   const data = JSON.parse(sessionStorage.getItem('filterData'))
   //過濾沒有圖片的資料
   const filterData = filterCardData(data)
+  console.log(filterData);
   const num = filterData.length
   const searchNum = $('<p/>',{class:'me-auto ms-3 align-self-end'})
   searchNum.append(`總共<span class="text-tertiary mx-1">${num}</span>筆`)
