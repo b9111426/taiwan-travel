@@ -87,8 +87,9 @@ export function renderPages (data) {
     $('.pagination').find('.firstPage-js,.pages-js,.lastPage-js').on('click',function(e){
       e.preventDefault()
       pageData.currentPage = +$(this).text()
+      console.log(pageData.currentPage);
       renderCard()
-      if(rows>6){reRenderPages()}
+      if(rows>4){reRenderPages()}
       changeClass()
     })
   }

@@ -3,6 +3,7 @@ import $ from 'jquery'
 import { getCity, filterData } from '../asset/getData'
 import { changeSelection } from '../asset/changeSelection'
 import getToken from '../asset/getToken'
+import { location } from '../asset/location'
 
 export default {
   cityData: [],
@@ -34,7 +35,7 @@ export default {
     })
   },
   init (token) {
-    if(window.location.pathname === '/index.html'){
+    if(location() === ''||location() === 'index'){
       this.focus()
     }
     this.changeSelect(token)

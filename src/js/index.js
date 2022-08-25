@@ -9,7 +9,7 @@ import getToken from './asset/getToken'
 import { createSwiper } from './asset/swiper'
 import { getData, filterData } from './asset/getData'
 import { createSwiperCard, createCard, filterCardData } from './asset/createCard'
-
+import { cardEvent } from './asset/cardEvent'
 // component
 import searchFn from './components/searchComponent'
 
@@ -51,9 +51,9 @@ $(() => {
       const filterCard2 = filterCardData(res[1].data)
       const filterCard3 = filterCardData(res[2].data)
 
-      createSwiperCard(filterCard1) // 創建swiper card dom元素
-      const str1 = createCard(filterCard2)
-      const str2 = createCard(filterCard3)
+      createSwiperCard(filterCard1,'Activity') // 創建swiper card dom元素
+      const str1 = createCard(filterCard2,'ScenicSpot')
+      const str2 = createCard(filterCard3,'Restaurant')
 
       $('.hotPoint').find('.sectionTitle').text('熱門打卡景點')
       $('.hotPoint').find('.moreLink').text('查看更多景點').attr('href', '../scenePage.html')
@@ -62,6 +62,8 @@ $(() => {
       $('.tastyFood').find('.sectionTitle').text('一再回訪美食')
       $('.tastyFood').find('.moreLink').text('查看更多美食').attr('href', '../foodPage.html')
       $('.tastyFood').find('.card-content').html(str2)
+      //將卡片賦予事件
+      cardEvent()
     }).then(() => {
       createSwiper()// 創建swiper實體
     })

@@ -1,6 +1,6 @@
 import $ from 'jquery'
 import { location } from './location'
-export function createSwiperCard (data) {
+export function createSwiperCard (data,section) {
   let str = ''
   data.forEach((item) => {
     let startTime = null
@@ -10,7 +10,7 @@ export function createSwiperCard (data) {
     const times = startTime[0].split('-').join('/') + ' - ' + endTime[0].split('-').join('/')
     str += /* html */`
     <div class="swiper-slide h-auto">
-      <div class="card h-100 bg-gray-100">
+      <div class="card cardContainer h-100 bg-gray-100"  data-title = ${section} data-city = ${item.City|| city}>
         <div class="card-imageContainer overflow-hidden">
           <img class="card-image object-fix w-100" src="${item.Picture.PictureUrl1}" class="card-img-top" alt="...">
         </div>
@@ -31,14 +31,14 @@ export function createSwiperCard (data) {
   $('.swiper-wrapper').eq(1).html(str)
 }
 
-export function createCard (data) {
+export function createCard (data ,section) {
   let str = ''
   data.forEach((item) => {
-    const city = item.Address.split('').slice(0, 3).join('')
+    const city = item.Address?.split('').slice(0, 3).join('')
 
     str += /* html */`
       <div class="col">
-        <div class="card h-100">
+        <div class="card h-100 bg-gray-100" data-title = ${section} data-city = ${item.City|| city}>
           <div class="card-imageContainer overflow-hidden">
             <img class="card-image object-fix w-100 h-100"  src="${item.Picture.PictureUrl1}" class="card-img-top" alt="...">
           </div>
