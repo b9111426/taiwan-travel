@@ -2,21 +2,15 @@
 // library
 import $ from 'jquery'
 
-// resource
-import getToken from './asset/getToken'
-import { filterCardData } from './asset/createCard'
 // component
-import searchFn from './components/searchComponent'
 import breadcrumbFn from './components/breadcrumb'
-import { renderPages } from './components/pagination'
+
 
 // html components
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
 import breadcrumb from '../html/components/breadcrumb.html'
-import searchComponent from '../html/components/searchComponent.html'
-import card from '../html/components/card.html'
-import pagination from '../html/components/pagination.html'
+
 
 $(() => {
   $('#header').html(headerHtml)
@@ -43,12 +37,20 @@ $(() => {
   switch(theme){
     case 'Activity' :
       {
-        const time = selectData.StartTime.split('T')[0]+'-'+selectData.EndTime.split('T')[0]
+        const startTime = selectData.StartTime.split('T')
+        const endTime = selectData.EndTime.split('T')
+        const time = startTime[0].split('-').join('/') + ' - ' + endTime[0].split('-').join('/')
         const list = /*html*/`
         <ul>
-            <li><strong class='d-inline'>活動時間:</strong><p class='d-inline'>${time}</p></li>
+            <li><strong>活動時間 :</strong><span class='ms-1'>${time}</span></li>
+            <li><strong>聯絡電話 :</strong><span class='ms-1'>${selectData.Phone?selectData.Phone:''}</span></li>
+            <li><strong>主辦單位 :</strong><span class='ms-1'>${selectData.Organizer}</span></li>
+            <li><strong>活動地點 :</strong><span class='ms-1'>${selectData.Address}</span></li>
+            <li><strong>官方網址 :</strong>
+            <a class='ms-1 link-secondary' href="${selectData.MapUrl}">${selectData.MapUrl?selectData.MapUrl:''}</a></li>
+            <li><strong>活動費用 :</strong><span class='ms-1'>${selectData.Charge}</span></li>
+
         </ul>
-        
         `
         $('.content-intro-left').html(list)
       }
