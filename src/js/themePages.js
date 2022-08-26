@@ -2,9 +2,6 @@
 // library
 import $ from 'jquery'
 
-// resource
-import getToken from './asset/getToken'
-
 // component
 import searchFn from './components/searchComponent'
 import breadcrumbFn from './components/breadcrumb'
@@ -25,5 +22,5 @@ $(() => {
 
   popularTopicsFn.init()
   breadcrumbFn.init()
-  searchFn.init(getToken.getCookieToken())
+  searchFn.init()
 })

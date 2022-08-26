@@ -11,9 +11,9 @@ export default {
   focus () {
     $('.search-input').trigger('focus')
   },
-  changeSelect (token) {
-    if (token) {
-      getCity(token).then((res) => {
+  changeSelect () {
+    if (location() !== 'index') {
+      getCity(getToken.getCookieToken()).then((res) => {
         changeSelection(res.data)
       })
     } else {
@@ -24,11 +24,10 @@ export default {
   search () {
     $('.search-btn').on('click', function (e) {
       e.stopPropagation()
-      const themeVal = $('select').val()
-      const aaa = JSON.stringify(themeVal)
+      const themeVal = $('select').val().trim()
       const val = $('.search-input').val()
       const token = getToken.getCookieToken()
-      sessionStorage.setItem('breadcrumb', aaa)
+      sessionStorage.setItem('breadcrumb', JSON.stringify(themeVal))
       const searchData = filterData(token, themeVal, '', 'Description', val)
       searchData.then((res) => {
         sessionStorage.setItem('filterData', JSON.stringify(res.data))
@@ -36,11 +35,11 @@ export default {
       })
     })
   },
-  init (token) {
+  init () {
     if(location() === ''||location() === 'index'){
       this.focus()
     }
-    this.changeSelect(token)
+    this.changeSelect()
     this.search()
   }
 }
