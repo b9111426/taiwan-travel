@@ -32,7 +32,7 @@ $(() => {
 
   
   $('.content-intro-title').text(data[theme]+'介紹:')
-  $('.content-article').text(selectData.Description)
+  $('.content-article').text(selectData.Description||selectData.DescriptionDetail)
 
   switch(theme){
     case 'Activity' :
@@ -43,17 +43,34 @@ $(() => {
         const list = /*html*/`
         <ul>
             <li><strong>活動時間 :</strong><span class='ms-1'>${time}</span></li>
-            <li><strong>聯絡電話 :</strong><span class='ms-1'>${selectData.Phone?selectData.Phone:''}</span></li>
+            <li><strong>聯絡電話 :</strong><a class='ms-1 link-secondary' href="tel:${selectData.Phone}">${selectData.Phone||''}</a></li>
             <li><strong>主辦單位 :</strong><span class='ms-1'>${selectData.Organizer}</span></li>
-            <li><strong>活動地點 :</strong><span class='ms-1'>${selectData.Address}</span></li>
+            <li><strong>活動地點 :</strong><span class='ms-1'>${selectData.Location+selectData.Address||''}</span></li>
             <li><strong>官方網址 :</strong>
-            <a class='ms-1 link-secondary' href="${selectData.MapUrl}">${selectData.MapUrl?selectData.MapUrl:''}</a></li>
-            <li><strong>活動費用 :</strong><span class='ms-1'>${selectData.Charge}</span></li>
+            <a class='ms-1 link-secondary' href="${selectData.MapUrl}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a></li>
+            <li><strong>活動費用 :</strong><span class='ms-1'>${selectData.Charge||''}</span></li>
 
         </ul>
         `
         $('.content-intro-left').html(list)
       }
+
+    case 'ScenicSpot' :
+      { 
+        const list = /*html*/`
+        <ul>
+        <li class='d-flex'><strong class='flex-shrink-0'>開放時間 :</strong><span class='ms-1'>${selectData.OpenTime||''}</span></li>
+        <li><strong>服務電話 :</strong><a class='ms-1 link-secondary' href="tel:${selectData.Phone}">${selectData.Phone||''}</a></li>
+        <li><strong>景點地址 :</strong><span class='ms-1'>${selectData.Address||selectData.Location||''}</span></li>
+        <li><strong>官方網址 :</strong>
+        <a class='ms-1 link-secondary' href="${selectData.MapUrl}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a></li>
+        <li class='d-flex'><strong class='flex-shrink-0'>票價資訊 :</strong><span class='ms-1'>${selectData.TicketInfo||''}</span></li>
+        </ul>`
+        $('.content-intro-left').html(list)
+      }
+    case 'Restaurant' :
+      {
+
+      }
   }
-  $('.content-intro-left')
 })

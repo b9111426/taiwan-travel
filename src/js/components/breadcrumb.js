@@ -24,7 +24,7 @@ export default {
 
     case 'contentPage':{
       const [selectData] = JSON.parse(sessionStorage.getItem('selectData'))
-      const city = selectData.Address.split('').slice(0, 3).join('')
+      const city = selectData.Address?.split('').slice(0, 3).join('')
       const location = data[theme].location
       const link1 = $('<li/>', { class: 'breadcrumb-item'}).append($('<a/>',{class:'link-secondary',text: data[theme].txt,href : `/${location}.html`}))
       const link2 = $('<li/>', { class: 'breadcrumb-item'}).append($('<a/>',{class:'link-secondary',text: selectData.City || city ,href : '/searchPage.html'}))

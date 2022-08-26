@@ -1,5 +1,11 @@
 .topics{
-  &-item{
-    height: 200px;
+  &-title{
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-shadow: 2px 2px 2px #000;
+    cursor: pointer;
+    @extend %centerPoint
   }
 }

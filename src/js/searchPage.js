@@ -5,7 +5,7 @@ import $ from 'jquery'
 // resource
 import getToken from './asset/getToken'
 import { filterCardData } from './asset/createCard'
-import { cardEvent } from './asset/cardEvent'
+
 // component
 import searchFn from './components/searchComponent'
 import breadcrumbFn from './components/breadcrumb'
@@ -34,8 +34,8 @@ $(() => {
   searchNum.append(`總共<span class="text-tertiary mx-1">${num}</span>筆`)
   $('.searchResult').find('.sectionTitle').text('收尋結果').after(searchNum)
   $('.searchResult').find('.moreLink').remove()
+  
   renderPages(filterData)
   breadcrumbFn.init()
   searchFn.init(getToken.getCookieToken())
-  cardEvent()
 })

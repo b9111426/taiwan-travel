@@ -48,14 +48,7 @@ a{
     }
   }
 }
-.topics-title{
-  color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  cursor: pointer;
-  @extend %centerPoint
-}
+
 
 .bg-gray-100{
   background-color: $gray-100;
@@ -66,4 +59,7 @@ a{
 }
 .breadcrumb-now{
   color: $gray-500;
+}
+.clear-both{
+  clear: both;
 }

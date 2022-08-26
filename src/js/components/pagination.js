@@ -1,6 +1,6 @@
 import $ from 'jquery'
 import { createCard } from '../asset/createCard'
-
+import { cardEvent } from '../asset/cardEvent'
 export function renderPages (data) {
   const pageData = {
     pageItems : 16,
@@ -88,8 +88,8 @@ export function renderPages (data) {
     $('.pagination').find('.firstPage-js,.pages-js,.lastPage-js').on('click',function(e){
       e.preventDefault()
       pageData.currentPage = +$(this).text()
-      console.log(pageData.currentPage);
       renderCard()
+      cardEvent()
       if(rows>4){reRenderPages()}
       changeClass()
     })
@@ -132,6 +132,7 @@ export function renderPages (data) {
       pageData.currentPage--
       if(rows>6){reRenderPages()}
       renderCard()
+      cardEvent()
       changeClass()
     }
   })
@@ -141,11 +142,13 @@ export function renderPages (data) {
       pageData.currentPage++
       if(rows>6){reRenderPages()}
       renderCard()
+      cardEvent()
       changeClass()
     }
   })
 
   renderCard()
+  cardEvent()
   if(rows>6){reRenderPages()}
   changeClass()
 }
