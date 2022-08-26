@@ -22,6 +22,10 @@ $(() => {
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
   $('#breadcrumb').html(breadcrumb)
-
   breadcrumbFn.init()
+  const [selectData] = JSON.parse(sessionStorage.getItem('selectData'))
+  const theme = JSON.parse(sessionStorage.getItem('breadcrumb'))
+  console.log(selectData);
+  $('.content-image').find('img').attr('src',selectData.Picture.PictureUrl1)
+  $('.content-title').text(selectData[theme+'Name'])
 })

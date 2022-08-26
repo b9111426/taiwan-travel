@@ -5,10 +5,6 @@ export default {
     const url = location()
     const data = { ScenicSpot: {txt:'探索景點',location:'scenePage'}, Activity:{txt:'節慶活動',location:'activityPage'} , Restaurant: {txt:'品嘗美食',location:'foodPage'} }
     const theme = JSON.parse(sessionStorage.getItem('breadcrumb'))
-    const [selectData] = JSON.parse(sessionStorage.getItem('selectData'))
-    const city = selectData.Address?.split('').slice(0, 3).join('')
-
-
     switch (url) {
     case 'scenePage':
       $('<li/>', { class: 'breadcrumb-item breadcrumb-now', text: '探索景點' }).appendTo('.breadcrumb')
@@ -27,6 +23,8 @@ export default {
     }
 
     case 'contentPage':{
+      const [selectData] = JSON.parse(sessionStorage.getItem('selectData'))
+      const city = selectData.Address.split('').slice(0, 3).join('')
       const location = data[theme].location
       const link1 = $('<li/>', { class: 'breadcrumb-item'}).append($('<a/>',{class:'link-secondary',text: data[theme].txt,href : `/${location}.html`}))
       const link2 = $('<li/>', { class: 'breadcrumb-item'}).append($('<a/>',{class:'link-secondary',text: selectData.City || city ,href : '/searchPage.html'}))

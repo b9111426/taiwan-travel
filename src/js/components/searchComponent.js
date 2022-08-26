@@ -25,9 +25,10 @@ export default {
     $('.search-btn').on('click', function (e) {
       e.stopPropagation()
       const themeVal = $('select').val()
+      const aaa = JSON.stringify(themeVal)
       const val = $('.search-input').val()
       const token = getToken.getCookieToken()
-      sessionStorage.setItem('breadcrumb', JSON.stringify(themeVal))
+      sessionStorage.setItem('breadcrumb', aaa)
       const searchData = filterData(token, themeVal, '', 'Description', val)
       searchData.then((res) => {
         sessionStorage.setItem('filterData', JSON.stringify(res.data))
