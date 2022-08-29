@@ -34,7 +34,6 @@ $(() => {
   searchNum.append(`總共<span class="text-tertiary mx-1">${num}</span>筆`)
   $('.searchResult').find('.sectionTitle').text('收尋結果').after(searchNum)
   $('.searchResult').find('.moreLink').remove()
-  
   renderPages(filterData)
   breadcrumbFn.init()
   searchFn.init(getToken.getCookieToken())

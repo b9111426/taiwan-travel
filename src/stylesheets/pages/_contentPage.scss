@@ -1,5 +1,18 @@
 .content{
-  &-image{
-    height: 500px;
+  &-image-1{
+    max-height: 500px;
+  }
+  &-image-2, &-image-3{
+    max-height: 100px;
+    cursor: pointer;
+    &:hover{
+      filter: opacity(50%)
+    }
+  }
+  &-class1,&-class2,&-class3{
+    color: $tertiary;
+    border: 1px solid $tertiary;
+    border-radius: 5px;
+    padding:.25rem .5rem;
   }
 }

@@ -21,7 +21,6 @@ export default {
       const classes = $(this).find('.topics-title').text()
       const searchData = filterData(token, themeVal, '', option, classes)
       searchData.then((res)=>{
-        
         sessionStorage.setItem('filterData', JSON.stringify(res.data))
         sessionStorage.setItem('breadcrumb',JSON.stringify(themeVal))
         window.location.assign('./searchPage.html')

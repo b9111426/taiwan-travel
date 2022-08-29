@@ -58,8 +58,8 @@ export function renderPages (data) {
       }
     }else if(pageData.currentPage>4 && pageData.currentPage<rows-3){
       $('.transition-item-js').show()
-      const isRange = pageData.range.indexOf(pageData.currentPage)
-      if(isRange === -1||isRange === 0){
+      const isRange = pageData.range.includes(pageData.currentPage)
+      if(!isRange){
         pageData.range = []
         $('.pagination').find('.pages-js').remove()
       
@@ -89,7 +89,6 @@ export function renderPages (data) {
       e.preventDefault()
       pageData.currentPage = +$(this).text()
       renderCard()
-      cardEvent()
       if(rows>4){reRenderPages()}
       changeClass()
     })
@@ -103,6 +102,7 @@ export function renderPages (data) {
     const currentPageData = pageData.allData.slice(start, end)
     const str = createCard(currentPageData,theme)
     $('.searchResult').find('.card-content').html(str)
+    cardEvent()
   }
   
   //替換樣式
@@ -132,7 +132,6 @@ export function renderPages (data) {
       pageData.currentPage--
       if(rows>6){reRenderPages()}
       renderCard()
-      cardEvent()
       changeClass()
     }
   })
@@ -142,13 +141,11 @@ export function renderPages (data) {
       pageData.currentPage++
       if(rows>6){reRenderPages()}
       renderCard()
-      cardEvent()
       changeClass()
     }
   })
 
   renderCard()
-  cardEvent()
   if(rows>6){reRenderPages()}
   changeClass()
 }
