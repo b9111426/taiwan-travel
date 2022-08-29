@@ -14,8 +14,7 @@
   },
   "staticFiles": {
     "staticPath": [
-      "src/asset/images/topics",
-      "src/asset/images/leaflet"
+      "src/asset/images/topics"
     ],
     " watcherGlob ": " ** "
   },
@@ -23,7 +22,6 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "jquery": "^3.6.0",
-    "leaflet": "^1.8.0",
     "popper.js": "^1.16.1",
     "swiper": "^8.3.1"
   },

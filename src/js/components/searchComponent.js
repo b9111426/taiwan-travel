@@ -15,6 +15,8 @@ export default {
     if (location() !== 'index') {
       getCity(getToken.getCookieToken()).then((res) => {
         changeSelection(res.data)
+      }).catch((err)=>{
+        console.log(err);
       })
     } else {
       changeSelection()
@@ -36,6 +38,7 @@ export default {
     })
   },
   init () {
+    
     if(location() === ''||location() === 'index'){
       this.focus()
     }
