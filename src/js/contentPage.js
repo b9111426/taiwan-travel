@@ -1,7 +1,7 @@
 
 // library
 import $ from 'jquery'
-
+import L from 'leaflet'
 // component
 import breadcrumbFn from './components/breadcrumb'
 
@@ -42,13 +42,16 @@ $(() => {
   $('.content-intro-title').text(data[theme]+'介紹:')
   $('.content-article').text(selectData.Description||selectData.DescriptionDetail)
 
+  let list = ''
   switch(theme){
     case 'Activity' :
-      {
+      
         const startTime = selectData.StartTime.split('T')
+        const startTimeHour = startTime[1].split('+')[0].substr(0,5)
         const endTime = selectData.EndTime.split('T')
-        const time = startTime[0].split('-').join('/') + ' - ' + endTime[0].split('-').join('/')
-        const list = /*html*/`
+        const endTimeHour = endTime[1].split('+')[0].substr(0,5)
+        const time = startTime[0].split('-').join('/') + ' ' +startTimeHour+' ~ ' + endTime[0].split('-').join('/') + ' ' +endTimeHour
+        list = /*html*/`
         <ul>
             <li><strong>活動時間 :</strong><span class='ms-1'>${time}</span></li>
             <li><strong>聯絡電話 :</strong><a class='ms-1 link-secondary' href="tel:${selectData.Phone}">${selectData.Phone||''}</a></li>
@@ -61,11 +64,10 @@ $(() => {
         </ul>
         `
         $('.content-intro-left').html(list)
-      }
+      break
 
     case 'ScenicSpot' :
-      { 
-        const list = /*html*/`
+        list = /*html*/`
         <ul>
         <li class='d-flex'><strong class='flex-shrink-0'>開放時間 :</strong><span class='ms-1'>${selectData.OpenTime||''}</span></li>
         <li class='d-flex'><strong class='flex-shrink-0'>主辦單位 :</strong><span class='ms-1'>${selectData.Organizer||''}</span></li>
@@ -76,10 +78,10 @@ $(() => {
         <li class='d-flex'><strong class='flex-shrink-0'>票價資訊 :</strong><span class='ms-1'>${selectData.TicketInfo||''}</span></li>
         </ul>`
         $('.content-intro-left').html(list)
-      }
+      break
     case 'Restaurant' :
-      {
-        const list = /*html*/`
+      
+        list = /*html*/`
         <ul>
         <li class='d-flex'><strong class='flex-shrink-0'>營業時間 :</strong><span class='ms-1'>${selectData.OpenTime||''}</span></li>
         <li class='d-flex'><strong class='flex-shrink-0'>聯絡電話 :</strong><a class='ms-1 link-secondary' href="tel:${selectData.Phone}">${selectData.Phone||''}</a></li>
@@ -89,6 +91,16 @@ $(() => {
         <a class='ms-1 link-secondary' target="blank" href="${selectData.MapUrl||selectData.WebsiteUrl||'#'}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a></li>
         </ul>`
         $('.content-intro-left').html(list)
+        break
       }
+
+      const map = L.map('content-map').setView([selectData.Position.PositionLat, selectData.Position.PositionLon], 16);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      const marker = L.marker([selectData.Position.PositionLat, selectData.Position.PositionLon]).addTo(map);
+      marker.bindPopup('<span class="cd-span">我是popup</span>', { className: 'mypopup' }).openPopup();
   }
-})
+)

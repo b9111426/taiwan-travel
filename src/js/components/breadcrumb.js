@@ -8,7 +8,6 @@ export default {
     switch (url) {
     case 'scenePage':
       $('<li/>', { class: 'breadcrumb-item breadcrumb-now', text: '探索景點' }).appendTo('.breadcrumb')
-
       break
     case 'activityPage':
       $('<li/>', { class: 'breadcrumb-item breadcrumb-now', text: '節慶活動' }).appendTo('.breadcrumb')
