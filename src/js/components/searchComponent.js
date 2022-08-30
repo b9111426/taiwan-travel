@@ -7,24 +7,16 @@ import { location } from '../asset/location'
 
 
 export default {
-  cityData: [],
   focus () {
     $('.search-input').trigger('focus')
   },
   changeSelect () {
-    if(this.cityData){
-      console.log('yes');
+    if (location() !== 'index') {
       getCity(getToken.getCookieToken()).then((res) => {
-        res.data.forEach((item)=>{
-          this.cityData.push(item)
-        })
+        changeSelection(res.data)
       }).catch((err)=>{
         console.log(err);
       })
-    }
-    if (location() !== 'index') {
-      console.log(this.cityData);
-      changeSelection(this.cityData)
     } else {
       changeSelection()
     }

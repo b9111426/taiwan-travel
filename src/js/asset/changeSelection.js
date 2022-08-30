@@ -1,7 +1,6 @@
 import $ from 'jquery'
 
 export function changeSelection (data) {
-
   if (data) {
     $('select').find('option').eq(0).html('-全部縣市-')
     $('select').find('option').eq(0).siblings().remove()
