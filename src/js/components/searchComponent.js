@@ -12,12 +12,19 @@ export default {
     $('.search-input').trigger('focus')
   },
   changeSelect () {
-    if (location() !== 'index') {
+    if(this.cityData){
+      console.log('yes');
       getCity(getToken.getCookieToken()).then((res) => {
-        changeSelection(res.data)
+        res.data.forEach((item)=>{
+          this.cityData.push(item)
+        })
       }).catch((err)=>{
         console.log(err);
       })
+    }
+    if (location() !== 'index') {
+      console.log(this.cityData);
+      changeSelection(this.cityData)
     } else {
       changeSelection()
     }

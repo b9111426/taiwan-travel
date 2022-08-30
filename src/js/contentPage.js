@@ -24,10 +24,13 @@ $(() => {
   console.log(selectData)
   
   $('.content-image-1').attr('src',selectData.Picture.PictureUrl1)
+  $('.content-image-title').text(selectData.Picture.PictureDescription1)
   $('.content-image-2').attr('src',selectData.Picture.PictureUrl2)
   $('.content-image-3').attr('src',selectData.Picture.PictureUrl3)
   $('.content-image-2,.content-image-3').on('click',function(){
     const toggleAttr = $('.content-image-1').attr('src')
+    const dataId = $(this).attr('data-id')
+    console.log(dataId);
     $('.content-image-1').attr('src',$(this).attr('src'))
     $(this).attr('src',toggleAttr)
   })
