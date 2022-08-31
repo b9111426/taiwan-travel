@@ -45,7 +45,7 @@ export default {
         const searchData = filterCityData(token, section,cityVal,searchOption,val)
         searchData.then((res)=>{
           sessionStorage.setItem('filterData', JSON.stringify(res.data))
-
+          window.location.assign('./searchPage.html')
         })
       }
     })
