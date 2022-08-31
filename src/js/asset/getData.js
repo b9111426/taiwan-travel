@@ -27,6 +27,16 @@ export function filterData (token, section, top , option, content) {
   })
 }
 
+export function filterCityData(token, section,city,option,content){
+  axios.defaults.headers.common.authorization = 'Bearer ' + token
+const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/${section}/${city}?$filter=contains(${option},'${content}')&$format=JSON`
+const instance = axios.create()
+return instance({
+  headers: { authorization: 'Bearer ' + token },
+  url: apiUrl
+})
+}
+
 export function getCity (token) {
   const apiUrl = 'https://tdx.transportdata.tw/api/basic/v2/Basic/City?%24format=JSON'
 

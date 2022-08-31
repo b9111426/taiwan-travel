@@ -1,6 +1,6 @@
 
 import $ from 'jquery'
-import { getCity, filterData } from '../asset/getData'
+import { getCity, filterData,filterCityData } from '../asset/getData'
 import { changeSelection } from '../asset/changeSelection'
 import getToken from '../asset/getToken'
 import { location } from '../asset/location'
@@ -25,15 +25,29 @@ export default {
   search () {
     $('.search-btn').on('click', function (e) {
       e.stopPropagation()
-      const themeVal = $('select').val().trim()
+      
       const val = $('.search-input').val()
       const token = getToken.getCookieToken()
-      sessionStorage.setItem('breadcrumb', JSON.stringify(themeVal))
-      const searchData = filterData(token, themeVal, '', 'Description', val)
-      searchData.then((res) => {
-        sessionStorage.setItem('filterData', JSON.stringify(res.data))
-        window.location.assign('./searchPage.html')
-      })
+      let searchOption = ''
+      if(location() === 'index'){
+        const themeVal = $('select').val().trim()
+        sessionStorage.setItem('breadcrumb', JSON.stringify(themeVal))
+        themeVal==='ScenicSpot'?searchOption = 'DescriptionDetail':searchOption = 'Description'
+        const searchData = filterData(token, themeVal, '', searchOption, val)
+        searchData.then((res) => {
+          sessionStorage.setItem('filterData', JSON.stringify(res.data))
+          window.location.assign('./searchPage.html')
+        })
+      }else{
+        const section = JSON.parse(sessionStorage.getItem('breadcrumb'))
+        section==='ScenicSpot'?searchOption = 'DescriptionDetail':searchOption = 'Description'
+        const cityVal = $('select').val().trim()
+        const searchData = filterCityData(token, section,cityVal,searchOption,val)
+        searchData.then((res)=>{
+          sessionStorage.setItem('filterData', JSON.stringify(res.data))
+
+        })
+      }
     })
   },
   init () {
