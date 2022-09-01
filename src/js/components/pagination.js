@@ -96,7 +96,7 @@ export function renderPages (data) {
 
   // 渲染出卡片
   function renderCard () {
-    const theme = JSON.parse(sessionStorage.getItem('breadcrumb'))
+    const theme = JSON.parse(sessionStorage.getItem('theme'))
     const start = (pageData.currentPage-1) * pageData.pageItems
     const end = start + pageData.pageItems
     const currentPageData = pageData.allData.slice(start, end)

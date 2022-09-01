@@ -7,6 +7,7 @@ import getToken from './asset/getToken'
 import { filterCardData } from './asset/createCard'
 
 // component
+import header from './components/header'
 import searchFn from './components/searchComponent'
 import breadcrumbFn from './components/breadcrumb'
 import { renderPages } from './components/pagination'
@@ -26,6 +27,7 @@ $(() => {
   $('#search').html(searchComponent)
   $('#pagination').html(pagination)
   $('.searchResult').html(card)
+  header.init()
   const data = JSON.parse(sessionStorage.getItem('filterData'))
   //過濾沒有圖片的資料
   const filterData = filterCardData(data)

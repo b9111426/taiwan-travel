@@ -23,15 +23,17 @@ export default {
   },
 
   search () {
+    const themeList = {ScenicSpot:'探索景點',Activity:'節慶活動',Restaurant:'品嚐美食'}
     $('.search-btn').on('click', function (e) {
       e.stopPropagation()
-      
-      const val = $('.search-input').val()
+      const val = $('.search-input').val().trim()
       const token = getToken.getCookieToken()
       let searchOption = ''
       if(location() === 'index'){
-        const themeVal = $('select').val().trim()
-        sessionStorage.setItem('breadcrumb', JSON.stringify(themeVal))
+        const themeVal = $('select').val()
+        const themeName = themeList[themeVal]
+        sessionStorage.setItem('theme', JSON.stringify(themeVal))
+        sessionStorage.setItem('breadcrumb', JSON.stringify(themeName))
         themeVal==='ScenicSpot'?searchOption = 'DescriptionDetail':searchOption = 'Description'
         const searchData = filterData(token, themeVal, '', searchOption, val)
         searchData.then((res) => {
@@ -39,10 +41,10 @@ export default {
           window.location.assign('./searchPage.html')
         })
       }else{
-        const section = JSON.parse(sessionStorage.getItem('breadcrumb'))
-        section==='ScenicSpot'?searchOption = 'DescriptionDetail':searchOption = 'Description'
+        const theme = JSON.parse(sessionStorage.getItem('theme'))
+        theme ==='ScenicSpot'?searchOption = 'DescriptionDetail':searchOption = 'Description'
         const cityVal = $('select').val().trim()
-        const searchData = filterCityData(token, section,cityVal,searchOption,val)
+        const searchData = filterCityData(token,theme,cityVal,searchOption,val)
         searchData.then((res)=>{
           sessionStorage.setItem('filterData', JSON.stringify(res.data))
           window.location.assign('./searchPage.html')

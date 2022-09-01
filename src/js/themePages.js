@@ -3,6 +3,7 @@
 import $ from 'jquery'
 
 // component
+import header from './components/header'
 import searchFn from './components/searchComponent'
 import breadcrumbFn from './components/breadcrumb'
 import popularTopicsFn from './components/popularTopics'
@@ -19,7 +20,7 @@ $(() => {
   $('#breadcrumb').html(breadcrumb)
   $('#search').html(searchComponent)
   $('#popularTopics').html(popularTopics)
-
+  header.init()
   popularTopicsFn.init()
   breadcrumbFn.init()
   searchFn.init()

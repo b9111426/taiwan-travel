@@ -3,6 +3,7 @@
 import $ from 'jquery'
 
 // component
+import header from './components/header'
 import breadcrumbFn from './components/breadcrumb'
 
 
@@ -16,13 +17,12 @@ $(() => {
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
   $('#breadcrumb').html(breadcrumb)
+  header.init()
   breadcrumbFn.init()
   const [selectData] = JSON.parse(sessionStorage.getItem('selectData'))
-  const theme = JSON.parse(sessionStorage.getItem('breadcrumb'))
-  const data = { ScenicSpot:'景點', Activity:'活動', Restaurant:'美食'}
-  console.log(theme)
-  console.log(selectData)
-  
+  const theme = JSON.parse(sessionStorage.getItem('theme'))
+  const themeList = { ScenicSpot:'景點', Activity:'活動', Restaurant:'美食'}
+
   $('.content-image-1').attr('src',selectData.Picture.PictureUrl1)
   $('.content-image-title').text(selectData.Picture.PictureDescription1)
   $('.content-image-2').attr('src',selectData.Picture.PictureUrl2)
@@ -43,7 +43,7 @@ $(() => {
   selectData.Class3?$('.content-class3').text('#' + selectData.Class3):$('.content-class3').hide()
 
   
-  $('.content-intro-title').text(data[theme]+'介紹:')
+  $('.content-intro-title').text(themeList[theme]+'介紹:')
   $('.content-article').text(selectData.Description||selectData.DescriptionDetail)
 
   let list = ''

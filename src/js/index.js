@@ -12,7 +12,7 @@ import { createSwiperCard, createCard, filterCardData } from './asset/createCard
 import { cardEvent } from './asset/cardEvent'
 // component
 import searchFn from './components/searchComponent'
-
+import header from './components/header'
 // html components
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
@@ -25,7 +25,7 @@ $(() => {
   $('#search').html(searchComponent)
   $('.tastyFood, .hotPoint').html(card)
   searchFn.init()
-
+  header.init()
   // 判斷是否有token
   if (getToken.getCookieToken() === '') {
     const tokenPromise = getToken.getAuthorizationHeader()
