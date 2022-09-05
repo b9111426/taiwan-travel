@@ -2,6 +2,8 @@
 // library
 import $ from 'jquery'
 
+// resource
+import { setBreadArray } from './asset/setBreadArray'
 // component
 import header from './components/header'
 import searchFn from './components/searchComponent'
@@ -21,6 +23,7 @@ $(() => {
   $('#search').html(searchComponent)
   $('#popularTopics').html(popularTopics)
   header.init()
+  setBreadArray()
   popularTopicsFn.init()
   breadcrumbFn.init()
   searchFn.init()

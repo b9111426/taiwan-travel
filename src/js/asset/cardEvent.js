@@ -9,7 +9,9 @@ export function cardEvent () {
     const title = $(this).parent().find('.card-text').text()
     const theme = $(this).parent().attr('data-title')
     sessionStorage.setItem('theme', JSON.stringify(theme))
-    sessionStorage.setItem('breadcrumb', JSON.stringify(title))
+    const breadArray = JSON.parse(sessionStorage.getItem('breadcrumb'))
+    breadArray.push(title)
+    sessionStorage.setItem('breadcrumb', JSON.stringify(breadArray))
     const themeName = theme + 'Name'
     filterData(token, theme, '', themeName, title).then((res) => {
       console.log(res.filterData)

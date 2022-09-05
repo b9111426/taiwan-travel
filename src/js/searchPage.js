@@ -4,6 +4,7 @@ import $ from 'jquery'
 
 // resource
 import getToken from './asset/getToken'
+import { setBreadArray } from './asset/setBreadArray'
 import { filterCardData } from './asset/createCard'
 
 // component
@@ -28,6 +29,7 @@ $(() => {
   $('#pagination').html(pagination)
   $('.searchResult').html(card)
   header.init()
+  setBreadArray()
   const data = JSON.parse(sessionStorage.getItem('filterData'))
   //過濾沒有圖片的資料
   const filterData = filterCardData(data)
