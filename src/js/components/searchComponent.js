@@ -22,7 +22,6 @@ export default {
   },
 
   search () {
-    const themeList = { ScenicSpot: '探索景點', Activity: '節慶活動', Restaurant: '品嚐美食' }
     $('.search-btn').on('click', function (e) {
       e.stopPropagation()
       const val = $('.search-input').val().trim()
@@ -30,15 +29,20 @@ export default {
       let searchOption = ''
       if (location() === 'index') {
         const themeVal = $('select').val()
-        const themeName = themeList[themeVal]
-        sessionStorage.setItem('theme', JSON.stringify(themeVal))
-        sessionStorage.setItem('breadcrumb', JSON.stringify(themeName))
-        themeVal === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
-        const searchData = filterData(token, themeVal, '', searchOption, val)
-        searchData.then((res) => {
-          sessionStorage.setItem('filterData', JSON.stringify(res.data))
-          window.location.assign('./searchPage.html')
-        })
+        if(themeVal==='hide'){
+          
+        }else if(val === ''){
+          
+
+        }else{
+          sessionStorage.setItem('theme', JSON.stringify(themeVal))
+          themeVal === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
+          const searchData = filterData(token, themeVal, '', searchOption, val)
+          searchData.then((res) => {
+            sessionStorage.setItem('filterData', JSON.stringify(res.data))
+            //window.location.assign('./searchPage.html')
+          })
+        }
       } else {
         const theme = JSON.parse(sessionStorage.getItem('theme'))
         theme === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
