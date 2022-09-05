@@ -14,7 +14,7 @@ export function getData (token, section, top = 30) {
   })
 }
 
-export function filterData (token, section, top , option, content) {
+export function filterData (token, section, top, option, content) {
   axios.defaults.headers.common.authorization = 'Bearer ' + token
   axios.defaults.method = 'get'
   const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/${section}?$filter=contains(${option},'${content}')&$top=${top}&$format=JSON`
@@ -23,18 +23,18 @@ export function filterData (token, section, top , option, content) {
   const instance = axios.create()
   return instance({
     headers: { authorization: 'Bearer ' + token },
-    url: top? apiUrl : allUrl
+    url: top ? apiUrl : allUrl
   })
 }
 
-export function filterCityData(token, section,city,option,content){
+export function filterCityData (token, section, city, option, content) {
   axios.defaults.headers.common.authorization = 'Bearer ' + token
-const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/${section}/${city}?$filter=contains(${option},'${content}')&$format=JSON`
-const instance = axios.create()
-return instance({
-  headers: { authorization: 'Bearer ' + token },
-  url: apiUrl
-})
+  const apiUrl = `https://tdx.transportdata.tw/api/basic/v2/Tourism/${section}/${city}?$filter=contains(${option},'${content}')&$format=JSON`
+  const instance = axios.create()
+  return instance({
+    headers: { authorization: 'Bearer ' + token },
+    url: apiUrl
+  })
 }
 
 export function getCity (token) {
