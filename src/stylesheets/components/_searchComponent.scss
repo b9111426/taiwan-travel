@@ -9,30 +9,6 @@
       outline: 2px solid $primary;
     }
   }
-  &-alert{
-    position: absolute;
-    @extend %centerPoint;
-    left: 50%;
-    bottom: 10%;
-    width: 180px;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    background-color: #fff;
-    border-radius: 10px;
-    z-index: 99;
-    filter: drop-shadow(0 0 5px black);
-    &::after{
-      content: '';
-      position: absolute;
-      @extend %centerPoint;
-      left: 50%;
-      bottom: -20px;
-      border-top:15px solid #fff ;
-      border-right:10px solid transparent;
-      border-left:10px solid transparent;
-    }
-  }
 }
 
 .select{
@@ -117,5 +93,33 @@
   &-overflowY{
     max-height: 165px;
     overflow-y: scroll;
+  }
+}
+
+.alert{
+  display: none;
+  position: absolute;
+  @extend %centerPoint;
+  left: 50%;
+  bottom: 10%;
+  width: 180px;
+  height: 50px;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 99;
+  user-select:none;
+  filter: drop-shadow(0 0 5px black);
+  &::after{
+    content: '';
+    position: absolute;
+    @extend %centerPoint;
+    left: 50%;
+    bottom: -20px;
+    border-top:15px solid #fff ;
+    border-right:10px solid transparent;
+    border-left:10px solid transparent;
   }
 }

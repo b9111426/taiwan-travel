@@ -22,27 +22,14 @@ export default {
   },
 
   search () {
+    let searchOption = ''
+    const token = getToken.getCookieToken()
     $('.search-btn').on('click', function (e) {
-      e.stopPropagation()
       const val = $('.search-input').val().trim()
-      const token = getToken.getCookieToken()
-      let searchOption = ''
+      e.stopPropagation()
       if (location() === 'index') {
         const themeVal = $('select').val()
-        if(themeVal==='hide'){
-          
-        }else if(val === ''){
-          
-
-        }else{
-          sessionStorage.setItem('theme', JSON.stringify(themeVal))
-          themeVal === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
-          const searchData = filterData(token, themeVal, '', searchOption, val)
-          searchData.then((res) => {
-            sessionStorage.setItem('filterData', JSON.stringify(res.data))
-            //window.location.assign('./searchPage.html')
-          })
-        }
+        validate (themeVal,val);
       } else {
         const theme = JSON.parse(sessionStorage.getItem('theme'))
         theme === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
@@ -54,6 +41,34 @@ export default {
         })
       }
     })
+    $('.search-input').on('keydown',function(e){
+      const themeVal = $('select').val()
+      const val = $(this).val().trim()
+      $('.search-alert').fadeOut(200)
+      if (e.key === 'Enter' || e.keyCode === 13){
+        e.preventDefault()
+        validate (themeVal,val)
+      }
+    })
+
+    function validate (themeVal,val) {
+      if(themeVal==='hide'|| val === ''){
+        themeVal==='hide'? $('.select-alert').fadeIn(200):$('.select-alert').fadeOut(200)
+        val === ''?$('.search-alert').fadeIn(200):$('.search-alert').fadeOut(200)
+        setTimeout(() => {
+          $('.search-alert').fadeOut(200)
+          $('.select-alert').fadeOut(200)
+        }, 2000);
+      }else{
+        sessionStorage.setItem('theme', JSON.stringify(themeVal))
+        themeVal === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
+        const searchData = filterData(token, themeVal, '', searchOption, val)
+        searchData.then((res) => {
+          sessionStorage.setItem('filterData', JSON.stringify(res.data))
+          window.location.assign('./searchPage.html')
+        })
+      }
+    }
   },
   init () {
     if (location() === '' || location() === 'index') {
