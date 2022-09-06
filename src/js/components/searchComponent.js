@@ -24,22 +24,12 @@ export default {
   search () {
     let searchOption = ''
     const token = getToken.getCookieToken()
+
     $('.search-btn').on('click', function (e) {
       const val = $('.search-input').val().trim()
       e.stopPropagation()
-      if (location() === 'index') {
-        const themeVal = $('select').val()
-        validate (themeVal,val);
-      } else {
-        const theme = JSON.parse(sessionStorage.getItem('theme'))
-        theme === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
-        const cityVal = $('select').val().trim()
-        const searchData = filterCityData(token, theme, cityVal, searchOption, val)
-        searchData.then((res) => {
-          sessionStorage.setItem('filterData', JSON.stringify(res.data))
-          window.location.assign('./searchPage.html')
-        })
-      }
+      const themeVal = $('select').val()
+      validate (themeVal,val);
     })
     $('.search-input').on('keydown',function(e){
       const themeVal = $('select').val()
@@ -60,19 +50,31 @@ export default {
           $('.select-alert').fadeOut(200)
         }, 2000);
       }else{
-        sessionStorage.setItem('theme', JSON.stringify(themeVal))
-        themeVal === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
-        const searchData = filterData(token, themeVal, '', searchOption, val)
-        searchData.then((res) => {
-          sessionStorage.setItem('filterData', JSON.stringify(res.data))
-          window.location.assign('./searchPage.html')
-        })
+        if(location() === 'index'){
+          sessionStorage.setItem('theme', JSON.stringify(themeVal))
+          themeVal === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
+          const searchData = filterData(token, themeVal, '', searchOption, val)
+          searchData.then((res) => {
+            sessionStorage.setItem('filterData', JSON.stringify(res.data))
+            window.location.assign('./searchPage.html')
+          })
+        }else{
+          const theme = JSON.parse(sessionStorage.getItem('theme'))
+          theme === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
+          const searchData = filterCityData(token, theme, themeVal, searchOption, val)
+          searchData.then((res) => {
+            sessionStorage.setItem('filterData', JSON.stringify(res.data))
+            window.location.assign('./searchPage.html')
+          })
+        }
       }
     }
   },
   init () {
     if (location() === '' || location() === 'index') {
       this.focus()
+    }else{
+      $('.select-alert').html('<i class="bi bi-exclamation-circle-fill  me-2 text-danger"></i>請選擇城市')
     }
     this.changeSelect()
     this.search()

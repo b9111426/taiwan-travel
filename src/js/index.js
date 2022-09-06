@@ -42,6 +42,18 @@ $(() => {
     renderCard(getToken.getCookieToken())
   }
 
+  $(window).on('scroll',function(){
+    const pageHight = $(window).innerHeight()
+    let scrollPos = $(window).scrollTop()
+    let offsetPos = $('.fixTop').offset().top
+    console.log('winScroll',scrollPos)
+    
+    //console.log('targetOffset',offsetPos);
+    if(scrollPos > pageHight){
+      
+    }
+  })
+
   // 渲染首頁畫面
   function renderCard (token) {
     const data1 = getData(token, 'Activity', 40)
