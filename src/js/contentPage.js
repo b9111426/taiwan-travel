@@ -1,40 +1,41 @@
-
 // library
 import $ from 'jquery'
 
+//resource
+import { contentImage } from './asset/contentImage'
+import { contentIntroLeft } from './asset/contentIntroLeft'
+import { contentIntroMap } from './asset/contentIntroMap'
+import { filterData } from './asset/getData'
+import { createCard, filterCardData } from './asset/createCard'
+import getToken from './asset/getToken'
+import { cardEvent } from './asset/cardEvent'
 // component
 import header from './components/header'
 import breadcrumbFn from './components/breadcrumb'
-
+import scrollTopFn from './components/scrollTop'
 
 // html components
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
 import breadcrumb from '../html/components/breadcrumb.html'
-
+import scrollTop  from '../html/components/scrollTop.html'
+import card from '../html/components/card.html'
 
 $(() => {
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
   $('#breadcrumb').html(breadcrumb)
+  $('#scrollTop').html(scrollTop)
+  $('.nearInfoCard').html(card)
+
   header.init()
   breadcrumbFn.init()
+  scrollTopFn.init()
+  const token = getToken.getCookieToken()
   const [selectData] = JSON.parse(sessionStorage.getItem('selectData'))
+  console.log(selectData);
   const theme = JSON.parse(sessionStorage.getItem('theme'))
   const themeList = { ScenicSpot:'景點', Activity:'活動', Restaurant:'美食'}
-
-  $('.content-image-1').attr('src',selectData.Picture.PictureUrl1)
-  $('.content-image-title').text(selectData.Picture.PictureDescription1)
-  $('.content-image-2').attr('src',selectData.Picture.PictureUrl2)
-  $('.content-image-3').attr('src',selectData.Picture.PictureUrl3)
-  $('.content-image-2,.content-image-3').on('click',function(){
-    const toggleAttr = $('.content-image-1').attr('src')
-    const dataId = $('.content-image-1').attr('data-id')
-    $('.content-image-1').attr('src',$(this).attr('src')).attr('data-id',$(this).attr('data-id'))
-    $(this).attr('src',toggleAttr).attr('data-id',dataId)
-    const id = $('.content-image-1').attr('data-id')
-    $('.content-image-title').text(selectData.Picture['PictureDescription'+id])
-  })
 
   $('.content-title').text(selectData[theme+'Name'])
 
@@ -46,65 +47,31 @@ $(() => {
   $('.content-intro-title').text(themeList[theme]+'介紹:')
   $('.content-article').text(selectData.Description||selectData.DescriptionDetail)
 
-  let list = ''
-  switch(theme){
-    case 'Activity' :
-      
-        const startTime = selectData.StartTime.split('T')
-        const startTimeHour = startTime[1].split('+')[0].substr(0,5)
-        const endTime = selectData.EndTime.split('T')
-        const endTimeHour = endTime[1].split('+')[0].substr(0,5)
-        const time = startTime[0].split('-').join('/') + ' ' +startTimeHour+' ~ ' + endTime[0].split('-').join('/') + ' ' +endTimeHour
-        list = /*html*/`
-        <ul>
-            <li><strong>活動時間 :</strong><span class='ms-1'>${time}</span></li>
-            <li><strong>聯絡電話 :</strong><a class='ms-1 link-secondary' href="tel:${selectData.Phone}">${selectData.Phone||''}</a></li>
-            <li><strong>主辦單位 :</strong><span class='ms-1'>${selectData.Organizer||''}</span></li>
-            <li><strong>活動地點 :</strong><span class='ms-1'>${selectData.Address||selectData.Location||''}</span></li>
-            <li><strong>官方網址 :</strong>
-            <a class='ms-1 link-secondary' href="${selectData.MapUrl||selectData.WebsiteUrl||'#'}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a></li>
-            <li><strong>活動費用 :</strong><span class='ms-1'>${selectData.Charge||''}</span></li>
 
-        </ul>
-        `
-        $('.content-intro-left').html(list)
-      break
+  $('.nearInfoCard').find('.sectionTitle').text(`附近還有這些${themeList[theme]}`)
+  $('.nearInfoCard').find('.moreLink').text(`查看更多${themeList[theme]}`).attr('href', 'javascript:;')
+  const geoHash = selectData.Position.GeoHash.slice(0,4)
+  const data = filterData(token, theme, 8, 'Position/GeoHash', geoHash)
+  data.then((res)=>{
+    const filterCard =filterCardData(res.data)
+    const str = createCard(filterCard, theme)
+    $('.nearInfoCard').find('.card-content').html(str)
+    cardEvent()
+  })
 
-    case 'ScenicSpot' :
-        list = /*html*/`
-        <ul>
-        <li class='d-flex'><strong class='flex-shrink-0'>開放時間 :</strong><span class='ms-1'>${selectData.OpenTime||''}</span></li>
-        <li class='d-flex'><strong class='flex-shrink-0'>主辦單位 :</strong><span class='ms-1'>${selectData.Organizer||''}</span></li>
-        <li class='d-flex'><strong class='flex-shrink-0'>服務電話 :</strong><a class='ms-1 link-secondary' href="tel:${selectData.Phone}">${selectData.Phone||''}</a></li>
-        <li class='d-flex'><strong class='flex-shrink-0'>景點地址 :</strong><span class='ms-1'>${selectData.Address||selectData.Location||''}</span></li>
-        <li class='d-flex'><strong class='flex-shrink-0'>官方網址 :</strong>
-        <a class='ms-1 link-secondary' target="blank" href="${selectData.MapUrl||selectData.WebsiteUrl||'#'}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a></li>
-        <li class='d-flex'><strong class='flex-shrink-0'>票價資訊 :</strong><span class='ms-1'>${selectData.TicketInfo||''}</span></li>
-        </ul>`
-        $('.content-intro-left').html(list)
-      break
-    case 'Restaurant' :
-      
-        list = /*html*/`
-        <ul>
-        <li class='d-flex'><strong class='flex-shrink-0'>營業時間 :</strong><span class='ms-1'>${selectData.OpenTime||''}</span></li>
-        <li class='d-flex'><strong class='flex-shrink-0'>聯絡電話 :</strong><a class='ms-1 link-secondary' href="tel:${selectData.Phone}">${selectData.Phone||''}</a></li>
-        <li class='d-flex'><strong class='flex-shrink-0'>餐廳名稱 :</strong><span class='ms-1'>${selectData.RestaurantName||''}</span></li>
-        <li class='d-flex'><strong class='flex-shrink-0'>餐廳地址 :</strong><span class='ms-1'>${selectData.Address||selectData.Location||''}</span></li>
-        <li class='d-flex'><strong class='flex-shrink-0'>官方網址 :</strong>
-        <a class='ms-1 link-secondary' target="blank" href="${selectData.MapUrl||selectData.WebsiteUrl||'#'}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a></li>
-        </ul>`
-        $('.content-intro-left').html(list)
-        break
-      }
+  $('.nearScene,.nearActivity,.nearFoot').on('click',function(){
+    const selectTheme = $(this).attr('data-theme')
+    const data = filterData(token, selectTheme, 8, 'Position/GeoHash', geoHash)
+    data.then((res)=>{
+      const filterCard =filterCardData(res.data)
+      const str = createCard(filterCard, selectTheme)
+      $('.nearInfoCard').find('.card-content').html(str)
+      cardEvent()
+    })
+  })
 
-    const map = L.map('content-map').setView([selectData.Position.PositionLat, selectData.Position.PositionLon], 16);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    const marker = L.marker([selectData.Position.PositionLat, selectData.Position.PositionLon]).addTo(map);
-    marker.bindPopup(`<span class="cd-span">${selectData[theme+'Name']}</span>`).openPopup();
+    contentImage(selectData)
+    contentIntroLeft(selectData,theme)
+    contentIntroMap(selectData,theme)
   }
 )

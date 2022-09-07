@@ -27,6 +27,15 @@ a{
   text-decoration: none;
 }
 
+html{
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
+
+#app{
+
+}
 .object-fix{
   object-fit: cover;
   object-position: center;
@@ -64,14 +73,3 @@ a{
   clear: both;
 }
 
-.fixTop{
-  bottom: 85px ;
-  right: 20px;
-  font-size: 50px;
-  text-align: center;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: $primary;
-  z-index: 99;
-}

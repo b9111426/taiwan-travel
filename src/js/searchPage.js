@@ -12,6 +12,7 @@ import header from './components/header'
 import searchFn from './components/searchComponent'
 import breadcrumbFn from './components/breadcrumb'
 import { renderPages } from './components/pagination'
+import scrollTopFn from './components/scrollTop'
 
 // html components
 import headerHtml from '../html/components/header.html'
@@ -20,6 +21,7 @@ import breadcrumb from '../html/components/breadcrumb.html'
 import searchComponent from '../html/components/searchComponent.html'
 import card from '../html/components/card.html'
 import pagination from '../html/components/pagination.html'
+import scrollTop from '../html/components/scrollTop.html'
 
 $(() => {
   $('#header').html(headerHtml)
@@ -27,8 +29,10 @@ $(() => {
   $('#breadcrumb').html(breadcrumb)
   $('#search').html(searchComponent)
   $('#pagination').html(pagination)
+  $('#scrollTop').html(scrollTop)
   $('.searchResult').html(card)
   header.init()
+  scrollTopFn.init()
   setBreadArray()
   const data = JSON.parse(sessionStorage.getItem('filterData'))
   //過濾沒有圖片的資料

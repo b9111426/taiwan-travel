@@ -13,9 +13,11 @@ import { cardEvent } from './asset/cardEvent'
 // component
 import searchFn from './components/searchComponent'
 import header from './components/header'
+import scrollTopFn from './components/scrollTop'
 // html components
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
+import scrollTop from '../html/components/scrollTop.html'
 import searchComponent from '../html/components/searchComponent.html'
 import card from '../html/components/card.html'
 
@@ -23,8 +25,10 @@ $(() => {
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
   $('#search').html(searchComponent)
+  $('#scrollTop').html(scrollTop)
   $('.tastyFood, .hotPoint').html(card)
   sessionStorage.setItem('breadcrumb', JSON.stringify([]))
+  scrollTopFn.init()
   searchFn.init()
   header.init()
   // 判斷是否有token
@@ -41,18 +45,6 @@ $(() => {
   } else {
     renderCard(getToken.getCookieToken())
   }
-
-  $(window).on('scroll',function(){
-    const pageHight = $(window).innerHeight()
-    let scrollPos = $(window).scrollTop()
-    let offsetPos = $('.fixTop').offset().top
-    console.log('winScroll',scrollPos)
-    
-    //console.log('targetOffset',offsetPos);
-    if(scrollPos > pageHight){
-      
-    }
-  })
 
   // 渲染首頁畫面
   function renderCard (token) {

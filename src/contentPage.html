@@ -26,19 +26,19 @@
             <img class="content-image-1 w-100 object-fix " data-id="1" src="" alt="">
             <h4 class="content-image-title fs-3 position-absolute"></h4>
           </div>
-          <img class="content-image-2 mt-1 object-fix" data-id="2" src="" alt="">
-          <img class="content-image-3 mt-1 object-fix" data-id="3" src="" alt="">
+          <img class="content-image-2 mt-2 object-fix" data-id="2" src="" alt="">
+          <img class="content-image-3 mt-2 ms-2 object-fix" data-id="3" src="" alt="">
         </div>
 
         <h1 class="content-title mt-4"></h1>
-        <div class="contant-classes-box mt-4">
-          <span class="content-class1 d-line"></span>
-          <span class="content-class2 d-line ms-2"></span>
-          <span class="content-class3 d-line ms-2"></span>
+        <div class="contant-classes-box mt-4 d-flex flex-wrap">
+          <span class="content-class1 "></span>
+          <span class="content-class2 ms-2"></span>
+          <span class="content-class3 ms-2"></span>
         </div>
 
         <div class="content-intro mt-5">
-          <strong class="content-intro-title fs-5"></strong>
+          <strong class="content-intro-title fs-4"></strong>
           <p class="content-article py-2 "></p>
         </div>
 
@@ -50,13 +50,26 @@
           </div>
         </div>
 
-        <div class="content-intro mt-4">
-          <strong class="around-intro-title fs-5">周邊資訊：</strong>
+        <div class="content-intro mt-5">
+          <strong class="around-intro-title fs-4">周邊資訊：</strong>
+          <div class="row row-cols-3 py-2 ">
+            <div class="col">
+              <button type="button" data-theme="ScenicSpot" class="nearScene btn btn-outline-secondary w-100 fs-3">附近景點</button>
+            </div>
+            <div class="col">
+              <button type="button" data-theme="Activity" class="nearActivity btn btn-outline-secondary w-100 fs-3">附近活動</button>
+            </div>
+            <div class="col">
+              <button type="button" data-theme="Restaurant" class="nearFoot btn btn-outline-secondary w-100 fs-3">附近美食</button>
+            </div>
+          </div>
         </div>
+
+        <section class="nearInfoCard"></section>
       </div>
     </div>
 
-
+    <scrollTop id="scrollTop"></scrollTop>
     <footer id="footer" class="bg-primary"></footer>
   </div>
   <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
