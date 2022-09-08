@@ -33,7 +33,6 @@ $(() => {
   scrollTopFn.init()
   const token = getToken.getCookieToken()
   const [selectData] = JSON.parse(sessionStorage.getItem('selectData'))
-  console.log(selectData);
   const theme = JSON.parse(sessionStorage.getItem('theme'))
   const themeList = { ScenicSpot:'景點', Activity:'活動', Restaurant:'美食'}
 
@@ -56,7 +55,7 @@ $(() => {
     const filterCard =filterCardData(res.data)
     const str = createCard(filterCard, theme)
     $('.nearInfoCard').find('.card-content').html(str)
-    cardEvent()
+    cardEvent('near')
   })
 
   $('.nearScene,.nearActivity,.nearFoot').on('click',function(){
@@ -66,7 +65,7 @@ $(() => {
       const filterCard =filterCardData(res.data)
       const str = createCard(filterCard, selectTheme)
       $('.nearInfoCard').find('.card-content').html(str)
-      cardEvent()
+      cardEvent('near')
     })
   })
 
