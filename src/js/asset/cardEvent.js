@@ -1,7 +1,6 @@
-
-import $ from 'jquery'
 import getToken from './getToken'
 import { filterData } from './getData'
+
 export function cardEvent (isNear) {
   const token = getToken.getCookieToken()
   $('.cardContainer').find('.card-imageContainer').on('click', function (e) {

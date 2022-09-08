@@ -1,5 +1,4 @@
 // library
-import $ from 'jquery'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 //resource
 import { contentImage } from './asset/contentImage'

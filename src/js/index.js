@@ -1,7 +1,5 @@
 
 // library
-import $ from 'jquery'
-// import '../../node_modules/swiper/swiper-bundle.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 
 // resource
@@ -27,7 +25,8 @@ $(() => {
   $('#search').html(searchComponent)
   $('#scrollTop').html(scrollTop)
   $('.tastyFood, .hotPoint').html(card)
-  sessionStorage.setItem('breadcrumb', JSON.stringify([]))
+  sessionStorage.removeItem('breadcrumb')
+  sessionStorage.removeItem('theme')
   scrollTopFn.init()
   searchFn.init()
   header.init()

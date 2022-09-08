@@ -1,5 +1,5 @@
-import $ from 'jquery'
 import { location } from './location'
+
 export function createSwiperCard (data,section) {
   let str = ''
   data.forEach((item) => {

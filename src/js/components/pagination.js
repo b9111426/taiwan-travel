@@ -1,4 +1,4 @@
-import $ from 'jquery'
+
 import { createCard } from '../asset/createCard'
 import { cardEvent } from '../asset/cardEvent'
 export function renderPages (data) {

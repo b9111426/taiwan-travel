@@ -1,4 +1,3 @@
-import $ from 'jquery'
 
 export function changeSelection (data) {
   if (data) {
@@ -15,10 +14,9 @@ export function changeSelection (data) {
   $('select').each(function () {
     const selectEl = $(this)
     const numberOfOptions = $(this).children('option').length
-
     selectEl.addClass('select-hidden')
-    selectEl.wrap('<div class="select h-100 fs-5 text-center  position-relative"></div>')
-    selectEl.after('<div class="select-styled pe-3"></div>')
+    selectEl.wrap('<div class="select fs-5 text-center"></div>')
+    selectEl.after('<div class="select-styled  pe-3"></div>')
     const styledSelect = selectEl.next('.select-styled')
     styledSelect.text(selectEl.children('option').eq(0).text())
     const listEl = $('<ul/>', { class: 'select-options' }).insertAfter(styledSelect)

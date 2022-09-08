@@ -1,5 +1,4 @@
 
-import $ from 'jquery'
 import { getCity, filterData, filterCityData } from '../asset/getData'
 import { changeSelection } from '../asset/changeSelection'
 import getToken from '../asset/getToken'
@@ -20,7 +19,17 @@ export default {
       changeSelection()
     }
   },
-
+  changeSearch(){
+    $('.main-search').removeClass('col-lg-8').addClass('col-lg-6')
+    const calendar = /*html*/`
+    <div class="col-lg-2 col-12">
+      <input type="text" id="datepicker" class="form-control h-100" onfocus="this.blur()">
+    </div>`
+    $('.main-search').before(calendar)
+    $( "#datepicker" ).datepicker({
+      showAnim: 'blind'
+    })
+  },
   search () {
     let searchOption = ''
     const token = getToken.getCookieToken()
@@ -71,6 +80,10 @@ export default {
     }
   },
   init () {
+    const theme = JSON.parse(sessionStorage.getItem('theme'))
+    if(theme === 'Activity'){
+      this.changeSearch()
+    }
     if (location() === '' || location() === 'index') {
       this.focus()
     }else{

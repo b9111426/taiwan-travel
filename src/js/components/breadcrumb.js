@@ -1,5 +1,4 @@
-import $ from 'jquery'
-import { location } from '../asset/location'
+
 export default {
   init () {
     const urlList = {

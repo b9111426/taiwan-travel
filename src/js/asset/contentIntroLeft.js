@@ -1,4 +1,4 @@
-import $ from 'jquery'
+
 export function contentIntroLeft(selectData,theme){
   let list = ''
   switch(theme){

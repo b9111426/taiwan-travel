@@ -1,4 +1,3 @@
-import $ from 'jquery'
 
 export function contentImage(selectData){
   $('.content-image-1').attr('src',selectData.Picture.PictureUrl1)

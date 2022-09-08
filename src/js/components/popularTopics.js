@@ -1,7 +1,6 @@
-import $ from 'jquery'
+
 import { createTopicClass } from '../asset/createCard'
 import { filterData } from '../asset/getData'
-import { location } from '../asset/location'
 import getToken from '../asset/getToken'
 
 export default {
