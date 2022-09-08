@@ -61,11 +61,13 @@ $(() => {
       const str2 = createCard(filterCard3, 'Restaurant')
 
       $('.hotPoint').find('.sectionTitle').text('熱門打卡景點')
-      $('.hotPoint').find('.moreLink').text('查看更多景點').attr('href', '../scenePage.html')
+      $('.hotPoint').find('.moreLink').html('查看更多景點<i class="bi bi-chevron-right"></i>')
+      .attr('href', '../scenePage.html')
       $('.hotPoint').find('.card-content').html(str1)
 
       $('.tastyFood').find('.sectionTitle').text('一再回訪美食')
-      $('.tastyFood').find('.moreLink').text('查看更多美食').attr('href', '../foodPage.html')
+      $('.tastyFood').find('.moreLink').html('查看更多美食<i class="bi bi-chevron-right"></i>')
+      .attr('href', '../foodPage.html')
       $('.tastyFood').find('.card-content').html(str2)
       // 將卡片賦予事件
       cardEvent()

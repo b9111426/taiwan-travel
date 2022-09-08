@@ -1,33 +1,46 @@
 .hamburger{
   &-menu{
     width: 30px;
-    height: 20px;
-    margin:11px 0;
+    height: 30px;
+    margin:6px 0;
     display: flex;
     flex-direction: column;
-    justify-content:space-between;
-  
+    justify-content:space-around;
+    transition: all .5s;
+    
     .menu-line{
       width: 100%;
       height: 3px;
       background-color: #fff;
       border-radius: 1px;
+      transform-origin:left;
       &-1{
         width: 70%;
         margin-left: auto;
-
-        &.active{
-          width: 100%;
-        }
+        transition: all .5s .3s;
       }
-
       &-2{
-        &.active{
-          opacity: 0;
-        }
+        opacity: 1;
+        transition: all .5s .3s;
       }
-
     }
   }
-}
 
+  &-menu.active{
+    justify-content:space-between;
+    transform: rotateZ(90deg);
+    .menu-line{
+      &-1:first-child{
+        width: 130%;
+        transform: rotateZ(45deg);
+      }
+      &-1:last-child{
+        width: 130%;
+        transform: rotateZ(-45deg);
+      }
+      &-2{
+        opacity: 0;
+      }
+    }
+  }  
+}

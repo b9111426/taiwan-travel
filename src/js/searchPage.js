@@ -1,7 +1,7 @@
 
 // library
 import $ from 'jquery'
-
+import 'bootstrap/dist/js/bootstrap.bundle.min'
 // resource
 import getToken from './asset/getToken'
 import { setBreadArray } from './asset/setBreadArray'

@@ -1,7 +1,7 @@
 
 // library
 import $ from 'jquery'
-
+import 'bootstrap/dist/js/bootstrap.bundle.min'
 // resource
 import { setBreadArray } from './asset/setBreadArray'
 // component
@@ -9,6 +9,7 @@ import header from './components/header'
 import searchFn from './components/searchComponent'
 import breadcrumbFn from './components/breadcrumb'
 import popularTopicsFn from './components/popularTopics'
+
 // html components
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'

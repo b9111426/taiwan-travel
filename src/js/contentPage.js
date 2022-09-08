@@ -1,6 +1,6 @@
 // library
 import $ from 'jquery'
-
+import 'bootstrap/dist/js/bootstrap.bundle.min'
 //resource
 import { contentImage } from './asset/contentImage'
 import { contentIntroLeft } from './asset/contentIntroLeft'
@@ -48,7 +48,7 @@ $(() => {
 
 
   $('.nearInfoCard').find('.sectionTitle').text(`附近還有這些${themeList[theme]}`)
-  $('.nearInfoCard').find('.moreLink').text(`查看更多${themeList[theme]}`).attr('href', 'javascript:;')
+  $('.nearInfoCard').find('.moreLink').html(`查看更多附近${themeList[theme]}<i class="bi bi-chevron-right"></i>`).attr('href', 'javascript:;')
   const geoHash = selectData.Position.GeoHash.slice(0,4)
   const data = filterData(token, theme, 8, 'Position/GeoHash', geoHash)
   data.then((res)=>{
@@ -60,6 +60,9 @@ $(() => {
 
   $('.nearScene,.nearActivity,.nearFoot').on('click',function(){
     const selectTheme = $(this).attr('data-theme')
+    $('.nearInfoCard').find('.sectionTitle').text(`附近還有這些${themeList[selectTheme]}`)
+    $('.nearInfoCard').find('.moreLink').html(`查看更多附近${themeList[selectTheme]}<i class="bi bi-chevron-right"></i>`)
+    .attr('href', 'javascript:;')
     const data = filterData(token, selectTheme, 8, 'Position/GeoHash', geoHash)
     data.then((res)=>{
       const filterCard =filterCardData(res.data)
