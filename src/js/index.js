@@ -25,7 +25,7 @@ $(() => {
   $('#search').html(searchComponent)
   $('#scrollTop').html(scrollTop)
   $('.tastyFood, .hotPoint').html(card)
-  sessionStorage.removeItem('breadcrumb')
+  sessionStorage.setItem('breadcrumb',JSON.stringify([]))
   sessionStorage.removeItem('theme')
   scrollTopFn.init()
   searchFn.init()
