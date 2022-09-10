@@ -28,7 +28,7 @@ export default {
     $('.search-input').trigger('focus')
   },
   changeSelect () {
-    if (location() !== 'index') {
+    if (location() !== 'index' && location() !== '') {
       getCity(getToken.getCookieToken()).then((res) => {
         changeSelection(res.data)
       }).catch((err) => {

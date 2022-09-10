@@ -61,15 +61,22 @@ $(() => {
 
       $('.hotPoint').find('.sectionTitle').text('熱門打卡景點')
       $('.hotPoint').find('.moreLink').html('查看更多景點<i class="bi bi-chevron-right"></i>')
-      .attr('href', '../scenePage.html')
+      .attr('data-id','ScenicSpot').attr('href', './scenePage.html')
+      
       $('.hotPoint').find('.card-content').html(str1)
 
       $('.tastyFood').find('.sectionTitle').text('一再回訪美食')
       $('.tastyFood').find('.moreLink').html('查看更多美食<i class="bi bi-chevron-right"></i>')
-      .attr('href', '../foodPage.html')
+      .attr('data-id','Restaurant').attr('href', './foodPage.html')
+      
       $('.tastyFood').find('.card-content').html(str2)
       // 將卡片賦予事件
       cardEvent()
+      $('.moreLink').on('click',function(){
+        const theme = $(this).attr('data-id')
+        sessionStorage.setItem('theme',JSON.stringify(theme))
+      })
+  
     }).then(() => {
       createSwiper()// 創建swiper實體
     })
