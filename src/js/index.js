@@ -8,6 +8,8 @@ import { createSwiper } from './asset/swiper'
 import { getData, filterData } from './asset/getData'
 import { createSwiperCard, createCard, filterCardData } from './asset/createCard'
 import { cardEvent } from './asset/cardEvent'
+import { filterTime } from './asset/filterTime'
+
 // component
 import searchFn from './components/searchComponent'
 import header from './components/header'
@@ -47,11 +49,13 @@ $(() => {
 
   // 渲染首頁畫面
   function renderCard (token) {
-    const data1 = getData(token, 'Activity', 40)
+    const data1 = getData(token, 'Activity', 200)
     const data2 = filterData(token, 'ScenicSpot', 30, 'DescriptionDetail', '熱門打卡')
     const data3 = filterData(token, 'Restaurant', 30, 'Description', '老店')
     Promise.all([data1, data2, data3]).then(res => {
-      const filterCard1 = filterCardData(res[0].data)
+      const futureActivity = filterTime(res[0].data)
+
+      const filterCard1 = filterCardData(futureActivity)
       const filterCard2 = filterCardData(res[1].data)
       const filterCard3 = filterCardData(res[2].data)
 

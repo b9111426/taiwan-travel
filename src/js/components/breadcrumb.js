@@ -10,7 +10,7 @@ export default {
     const now = breadArray[breadArray.length-1]
     breadArray.pop()
     breadArray.forEach((item)=>{
-      const aLink = $('<a/>',{href:'/'+urlList[item],class:'link-secondary',text:item})
+      const aLink = $('<a/>',{href:'./'+urlList[item],class:'link-secondary',text:item})
       const li = $('<li/>', { class: 'breadcrumb-item'}).append(aLink)
       $('.breadcrumb').append(li)
     })

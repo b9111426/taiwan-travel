@@ -25,7 +25,7 @@ export function contentIntroLeft(selectData,theme){
             </li>
             <li class='d-flex'>
             <strong class='flex-shrink-0'>官方網址 :</strong>
-            <a class='ms-1 link-secondary' href="${selectData.MapUrl||selectData.WebsiteUrl||'#'}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a>
+            <a class='ms-1 link-secondary text-break' href="${selectData.MapUrl||selectData.WebsiteUrl||'#'}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a>
             </li>
             <li class='d-flex'>
             <strong class='flex-shrink-0'>活動費用 :</strong><span class='ms-1'>${selectData.Charge||''}</span>
@@ -57,7 +57,7 @@ export function contentIntroLeft(selectData,theme){
         </li>
         <li class='d-flex'>
         <strong class='flex-shrink-0'>官方網址 :</strong>
-        <a class='ms-1 link-secondary' target="blank" href="${selectData.MapUrl||selectData.WebsiteUrl||'#'}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a>
+        <a class='ms-1 link-secondary text-break' target="blank" href="${selectData.MapUrl||selectData.WebsiteUrl||'#'}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a>
         </li>
         <li class='d-flex'>
         <strong class='flex-shrink-0'>票價資訊 :</strong><span class='ms-1'>${selectData.TicketInfo||''}</span>
@@ -86,7 +86,7 @@ export function contentIntroLeft(selectData,theme){
         </li>
         <li class='d-flex'>
         <strong class='flex-shrink-0'>官方網址 :</strong>
-        <a class='ms-1 link-secondary' target="blank" href="${selectData.MapUrl||selectData.WebsiteUrl||'#'}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a>
+        <a class='ms-1 link-secondary text-break' target="blank" href="${selectData.MapUrl||selectData.WebsiteUrl||'#'}">${selectData.MapUrl||selectData.WebsiteUrl||''}</a>
         </li>
         </ul>`
         $('.content-intro-left').html(list)
