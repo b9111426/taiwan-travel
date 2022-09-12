@@ -1,5 +1,5 @@
+/* eslint-disable no-new */
 import Swiper from 'swiper/swiper-bundle.min'
-
 
 export function createSwiper () {
   const pageSetting = function (index, className) {

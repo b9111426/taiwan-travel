@@ -1,16 +1,16 @@
 
-export default{
-  init(){
-    $(window).on('scroll',function(){
+export default {
+  init () {
+    $(window).on('scroll', function () {
       const pageHight = $(window).innerHeight()
-      let scrollPos = $(window).scrollTop()
-  
-      if(scrollPos > pageHight/2){
+      const scrollPos = $(window).scrollTop()
+
+      if (scrollPos > pageHight / 2) {
         $('.fixTop').fadeIn(500)
-      }else{
+      } else {
         $('.fixTop').fadeOut(500)
       }
-      $('.fixTop').on('click',function(){
+      $('.fixTop').on('click', function () {
         $('html,body').scrollTop(0)
       })
     })

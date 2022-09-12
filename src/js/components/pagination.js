@@ -10,14 +10,14 @@ export function renderPages (data) {
   }
   pageData.allData = data
 
-  //總頁籤數
+  // 總頁籤數
   const rows = Math.ceil(pageData.allData.length / pageData.pageItems)
 
-  //創建過度按鈕
+  // 創建過度按鈕
   const transition = $('<li/>', { class: 'page-item transition-item-js' }).append($('<a/>', { class: 'page-link link-secondary disabled', href: 'javascript:;', text: '...' }))
   const transition2 = transition.clone()
 
-//創建第1頁和最後頁按鈕
+  // 創建第1頁和最後頁按鈕
   const firstLink = $('<a/>', { class: 'page-link link-secondary', href: 'javascript:;', text: 1 })
   const firstItem = $('<li/>', { class: 'page-item firstPage-js' }).append(firstLink)
   $('.pagination').children('.page-item').eq(0).after(firstItem)
@@ -26,7 +26,7 @@ export function renderPages (data) {
   const lastItem = $('<li/>', { class: 'page-item  lastPage-js' }).append(lastALink)
   $('.pagination').children('.page-item').last().before(lastItem)
 
-//如果只有5個頁籤
+  // 如果只有5個頁籤
   if (rows <= 5) {
     for (let idx = 1; idx < rows - 1; idx++) {
       const aLink = $('<a/>', { class: 'page-link link-secondary', href: 'javascript:;', text: idx + 1 })
@@ -35,7 +35,7 @@ export function renderPages (data) {
     }
   }
 
-//如果只有1頁籤或沒有資料
+  // 如果只有1頁籤或沒有資料
   if (rows === 1 || rows === 0) {
     $('.lastPage-js').remove()
   }
@@ -59,7 +59,7 @@ export function renderPages (data) {
     } else if (pageData.currentPage > 4 && pageData.currentPage < rows - 3) {
       $('.transition-item-js').show()
       const isRange = pageData.range.includes(pageData.currentPage)
-      //判斷是否需重新渲染
+      // 判斷是否需重新渲染
       if (!isRange) {
         pageData.range = []
         $('.pagination').find('.pages-js').remove()

@@ -34,10 +34,10 @@ $(() => {
   scrollTopFn.init()
   setBreadArray()
   const data = JSON.parse(sessionStorage.getItem('filterData'))
-  //過濾沒有圖片的資料
+  // 過濾沒有圖片的資料
   const filterData = filterCardData(data)
   const num = filterData.length
-  const searchNum = $('<p/>',{class:'me-auto ms-3 align-self-end'})
+  const searchNum = $('<p/>', { class: 'me-auto ms-3 align-self-end' })
   searchNum.append(`總共<span class="text-tertiary mx-1">${num}</span>筆`)
   $('.searchResult').find('.sectionTitle').text('收尋結果').after(searchNum)
   $('.searchResult').find('.moreLink').remove()

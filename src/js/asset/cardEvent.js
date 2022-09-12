@@ -9,7 +9,7 @@ export function cardEvent (isNear) {
     const theme = $(this).parent().attr('data-title')
     sessionStorage.setItem('theme', JSON.stringify(theme))
     const breadArray = JSON.parse(sessionStorage.getItem('breadcrumb'))
-    if(isNear){breadArray.pop()}
+    if (isNear) { breadArray.pop() }
     breadArray.push(title)
     sessionStorage.setItem('breadcrumb', JSON.stringify(breadArray))
     const themeName = theme + 'Name'
