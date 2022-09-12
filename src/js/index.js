@@ -15,6 +15,7 @@ import searchFn from './components/searchComponent'
 import header from './components/header'
 import scrollTopFn from './components/scrollTop'
 // html components
+import loading from '../html/components/loading.html'
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
 import scrollTop from '../html/components/scrollTop.html'
@@ -22,6 +23,7 @@ import searchComponent from '../html/components/searchComponent.html'
 import card from '../html/components/card.html'
 
 $(() => {
+  $('#loading').html(loading)
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
   $('#search').html(searchComponent)
@@ -82,6 +84,7 @@ $(() => {
       })
     }).then(() => {
       createSwiper()// 創建swiper實體
+      $('#loading').addClass('d-none')
     })
   }
 })

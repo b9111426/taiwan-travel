@@ -14,6 +14,7 @@ import { renderPages } from './components/pagination'
 import scrollTopFn from './components/scrollTop'
 
 // html components
+import loading from '../html/components/loading.html'
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
 import breadcrumb from '../html/components/breadcrumb.html'
@@ -23,6 +24,7 @@ import pagination from '../html/components/pagination.html'
 import scrollTop from '../html/components/scrollTop.html'
 
 $(() => {
+  $('#loading').html(loading)
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
   $('#breadcrumb').html(breadcrumb)
@@ -44,4 +46,5 @@ $(() => {
   renderPages(filterData)
   breadcrumbFn.init()
   searchFn.init(getToken.getCookieToken())
+  $('#loading').addClass('d-none')
 })

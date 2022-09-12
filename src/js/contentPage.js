@@ -14,6 +14,7 @@ import breadcrumbFn from './components/breadcrumb'
 import scrollTopFn from './components/scrollTop'
 
 // html components
+import loading from '../html/components/loading.html'
 import headerHtml from '../html/components/header.html'
 import footerHtml from '../html/components/footer.html'
 import breadcrumb from '../html/components/breadcrumb.html'
@@ -21,6 +22,7 @@ import scrollTop from '../html/components/scrollTop.html'
 import card from '../html/components/card.html'
 
 $(() => {
+  $('#loading').html(loading)
   $('#header').html(headerHtml)
   $('#footer').html(footerHtml)
   $('#breadcrumb').html(breadcrumb)
@@ -80,5 +82,6 @@ $(() => {
   contentImage(selectData)
   contentIntroLeft(selectData, theme)
   contentIntroMap(selectData, theme)
+  $('#loading').addClass('d-none')
 }
 )
