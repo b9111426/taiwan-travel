@@ -14,7 +14,8 @@
   },
   "staticFiles": {
     "staticPath": [
-      "src/asset/images/topics"
+      "src/asset/images/topics",
+      "src/asset/images/search.svg"
     ],
     " watcherGlob ": " ** "
   },

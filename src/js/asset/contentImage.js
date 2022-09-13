@@ -1,6 +1,16 @@
 
 export function contentImage (selectData) {
   $('.content-image-1').attr('src', selectData.Picture.PictureUrl1)
+  selectData.Picture.PictureUrl1
+    ? $('.content-image-1').addClass('img-thumbnail')
+    : $('.content-image-1').removeClass('img-thumbnail')
+  selectData.Picture.PictureUrl2
+    ? $('.content-image-2').addClass('img-thumbnail')
+    : $('.content-image-2').removeClass('img-thumbnail')
+  selectData.Picture.PictureUrl3
+    ? $('.content-image-3').addClass('img-thumbnail')
+    : $('.content-image-3').removeClass('img-thumbnail')
+
   $('.content-image-title').text(selectData.Picture.PictureDescription1)
   $('.content-image-2').attr('src', selectData.Picture.PictureUrl2)
   $('.content-image-3').attr('src', selectData.Picture.PictureUrl3)

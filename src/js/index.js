@@ -82,9 +82,12 @@ $(() => {
       })
     }).then(() => {
       createSwiper()// 創建swiper實體
-        $('#loading').addClass('d-none')
-        $('.banner-title').addClass('animate__animated animate__fadeInUp animate__slow 2s')
-        $('.banner-subTitle').addClass('animate__animated  animate__fadeInUp animate__slow 2s animate__delay-1s')
+      $('#loading').addClass('d-none')
+      $('.banner-title').addClass('animate__animated animate__fadeInUp animate__slow 2s')
+      $('.banner-subTitle').addClass('animate__animated  animate__fadeInUp animate__slow 2s animate__delay-1s')
+      setTimeout(() => {
+        $('.banner-title-deco').addClass('extend')
+      }, 1000)
     })
   }
 })

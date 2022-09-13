@@ -104,6 +104,7 @@ export function renderPages (data) {
     const str = createCard(currentPageData, theme)
     $('.searchResult').find('.card-content').html(str)
     cardEvent()
+    $('.card').addClass('animate__animated animate__fadeIn')
   }
 
   // 頁籤交互樣式

@@ -5,9 +5,8 @@ import { contentImage } from './asset/contentImage'
 import { contentIntroLeft } from './asset/contentIntroLeft'
 import { contentIntroMap } from './asset/contentIntroMap'
 import { filterData } from './asset/getData'
-import { createCard, filterCardData } from './asset/createCard'
 import getToken from './asset/getToken'
-import { cardEvent } from './asset/cardEvent'
+import { contentNearCard, nearBtnEvent } from './asset/contentNear'
 // component
 import header from './components/header'
 import breadcrumbFn from './components/breadcrumb'
@@ -44,42 +43,21 @@ $(() => {
   $('.content-intro-title').text(themeList[theme] + '介紹:')
   $('.content-article').text(selectData.Description || selectData.DescriptionDetail)
 
-  $('.nearInfoCard').find('.sectionTitle').text(`附近還有這些${themeList[theme]}`)
-  $('.nearInfoCard').find('.moreLink').html(`查看更多附近${themeList[theme]}<i class="bi bi-chevron-right"></i>`).attr('href', 'javascript:;').attr('data-id', theme)
   const geoHash = selectData.Position.GeoHash.slice(0, 4)
-  const data = filterData(token, theme, 8, 'Position/GeoHash', geoHash)
-  data.then((res) => {
-    const filterCard = filterCardData(res.data)
-    const str = createCard(filterCard, theme)
-    $('.nearInfoCard').find('.card-content').html(str)
-    cardEvent('near')
-  })
 
-  $('.nearScene,.nearActivity,.nearFoot').on('click', function () {
-    const selectTheme = $(this).attr('data-theme')
-    $('.nearInfoCard').find('.sectionTitle').text(`附近還有這些${themeList[selectTheme]}`)
-    $('.nearInfoCard').find('.moreLink').html(`查看更多附近${themeList[selectTheme]}<i class="bi bi-chevron-right"></i>`)
-      .attr('href', 'javascript:;').attr('data-id', selectTheme)
-    const data = filterData(token, selectTheme, 25, 'Position/GeoHash', geoHash)
-    data.then((res) => {
-      const filterCard = filterCardData(res.data)
-      const str = createCard(filterCard, selectTheme)
-      $('.nearInfoCard').find('.card-content').html(str)
-      cardEvent('near')
-    })
+  $(window).on('scroll', function () {
+    const pageHight = $(window).innerHeight()
+    const scrollPos = $(window).scrollTop()
+
+    if (scrollPos > pageHight / 2) {
+      $('.card-content').addClass('animate__animated animate__bounceInLeft')
+    }
   })
-  $('.moreLink').on('click', function () {
-    const selectTheme = $(this).attr('data-id')
-    const data = filterData(token, selectTheme, '', 'Position/GeoHash', geoHash)
-    data.then((res) => {
-      sessionStorage.setItem('theme', JSON.stringify(selectTheme))
-      sessionStorage.setItem('filterData', JSON.stringify(res.data))
-      window.location.assign('./searchPage.html')
-    })
-  })
+  nearBtnEvent(filterData, themeList, token, geoHash)
+  contentNearCard(filterData, token, theme, geoHash, themeList)
   contentImage(selectData)
   contentIntroLeft(selectData, theme)
-  contentIntroMap(selectData, theme) 
-    $('#loading').addClass('d-none')
+  contentIntroMap(selectData, theme)
+  $('#loading').addClass('d-none')
 }
 )
