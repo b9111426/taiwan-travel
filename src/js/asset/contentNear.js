@@ -37,8 +37,15 @@ export function nearBtnEvent (filterData, themeList, token, geoHash) {
       const filterCard = filterCardData(res.data)
       const str = createCard(filterCard, selectTheme)
       $('.nearInfoCard').find('.card-content').html(str)
+      
+      const outerWidth = $(window).outerWidth()
+
+      if ( outerWidth> 960) {
+        $('.card-content').addClass('animate__animated animate__bounceInLeft')
+      }else{
+        $('.card').addClass('animate__animated animate__fadeIn')
+      }
       cardEvent('near')
-      $('.card-content').addClass('animate__animated animate__bounceInLeft')
     })
   })
 }
