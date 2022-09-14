@@ -9,13 +9,16 @@
     top: 50%;
     left: 50%;
     @extend %centerPoint;
-    width: 60vw;
+    width: 70vw;
 
     @include x-laptop(){
-      width: 80vw;
+      width: 95vw;
+    }
+    @include laptop(){
+      width: 100vw;
     }
     @include mobile(){
-      width: 100vw;
+      width: 85vw;
     }
 
   }
@@ -54,17 +57,17 @@
       top: 50%;
       left: 50%;
       @extend %centerPoint;
-      width: 60vw;
+      width: 70vw;
       height: 60vh;
       backdrop-filter: blur(4px);
       border-radius: 6px;
       z-index: 2;
       @include x-laptop(){
-        width: 75vw;
+        width: 90vw;
       }
 
       @include pad(){
-        width: 85vw;
+        width: 90vw;
       }
 
       @include mobile(){
