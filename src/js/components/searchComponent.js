@@ -81,15 +81,15 @@ export default {
         // 判斷是否是活動收尋,關鍵字非必須條件
         if (theme !== 'Activity') {
           val === '' ? $('.search-alert').fadeIn(200) : $('.search-alert').fadeOut(200)
-        } else {
-          activitySearch(dateData)
+        }else if(dateData !== ''&& themeVal !== 'hide'){
+          activitySearch (dateData)
         }
         setTimeout(() => {
           $('.search-alert').fadeOut(200)
           $('.select-alert').fadeOut(200)
           $('.date-alert').fadeOut(200)
         }, 2000)
-      } else {
+      }else {
         if (location() === 'index'||location() === '') {
           sessionStorage.setItem('theme', JSON.stringify(themeVal))
           themeVal === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
@@ -102,7 +102,7 @@ export default {
             $('.spinner-border').addClass('d-none')
             window.location.assign('./searchPage.html')
           })
-        } else {
+        }else {
           const theme = JSON.parse(sessionStorage.getItem('theme'))
           theme === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
           const searchData = filterCityData(token, theme, themeVal, searchOption, val)

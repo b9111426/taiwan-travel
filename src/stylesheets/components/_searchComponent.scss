@@ -122,16 +122,28 @@
   background-color: #fff;
   border-radius: 10px;
   z-index: 99;
+  outline: 1px solid black;
   user-select:none;
-  filter: drop-shadow(0 0 5px black);
-  -webkit-filter: drop-shadow(0 0 5px black);
+
+  &::before{
+    content: '';
+    position: absolute;
+    @extend %centerPoint;
+    z-index: 99;
+    left: 50%;
+    bottom: -20px;
+    border-top:15px solid #fff ;
+    border-right:10px solid transparent;
+    border-left:10px solid transparent;
+  }
   &::after{
     content: '';
     position: absolute;
     @extend %centerPoint;
+    z-index: 90;
     left: 50%;
-    bottom: -20px;
-    border-top:15px solid #fff ;
+    bottom: -22px;
+    border-top:15px solid #000 ;
     border-right:10px solid transparent;
     border-left:10px solid transparent;
   }
