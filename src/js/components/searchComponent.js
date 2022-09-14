@@ -90,20 +90,28 @@ export default {
           $('.date-alert').fadeOut(200)
         }, 2000)
       } else {
-        if (location() === 'index') {
+        if (location() === 'index'||location() === '') {
           sessionStorage.setItem('theme', JSON.stringify(themeVal))
           themeVal === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
+          $('.bi-search').addClass('d-none')
+          $('.spinner-border').removeClass('d-none')
           const searchData = filterData(token, themeVal, '', searchOption, val)
           searchData.then((res) => {
             sessionStorage.setItem('filterData', JSON.stringify(res.data))
+            $('.bi-search').removeClass('d-none')
+            $('.spinner-border').addClass('d-none')
             window.location.assign('./searchPage.html')
           })
         } else {
           const theme = JSON.parse(sessionStorage.getItem('theme'))
           theme === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
           const searchData = filterCityData(token, theme, themeVal, searchOption, val)
+          $('.bi-search').addClass('d-none')
+          $('.spinner-border').removeClass('d-none')
           searchData.then((res) => {
             sessionStorage.setItem('filterData', JSON.stringify(res.data))
+            $('.bi-search').removeClass('d-none')
+            $('.spinner-border').addClass('d-none')
             window.location.assign('./searchPage.html')
           })
         }
@@ -111,6 +119,8 @@ export default {
 
       function activitySearch (dateData) {
         const searchData = filterCityData(token, theme, themeVal, 'Description', val)
+        $('.bi-search').addClass('d-none')
+        $('.spinner-border').removeClass('d-none')
         searchData.then((res) => {
           const selectTime = parseInt(dateData.split('-').join(''))
           const filterDate = res.data.filter((item) => {
@@ -118,6 +128,8 @@ export default {
             return itemTime >= selectTime
           })
           sessionStorage.setItem('filterData', JSON.stringify(filterDate))
+          $('.bi-search').removeClass('d-none')
+          $('.spinner-border').addClass('d-none')
           window.location.assign('./searchPage.html')
         })
       }
@@ -128,6 +140,7 @@ export default {
     if (theme === 'Activity') {
       this.switchDateSearch()
     }
+    
     if (location() === '' || location() === 'index') {
       this.focus()
     } else {
