@@ -124,6 +124,7 @@
   z-index: 99;
   user-select:none;
   filter: drop-shadow(0 0 5px black);
+  -webkit-filter: drop-shadow(0 0 5px black);
   &::after{
     content: '';
     position: absolute;
