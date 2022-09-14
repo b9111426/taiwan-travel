@@ -56,10 +56,11 @@ $(() => {
       const futureActivity = filterTime(res[0].data)
 
       const filterCard1 = filterCardData(futureActivity)
+      createSwiperCard(filterCard1, 'Activity') // 創建swiper card dom元素
+      createSwiper()// 創建swiper實體
+
       const filterCard2 = filterCardData(res[1].data)
       const filterCard3 = filterCardData(res[2].data)
-
-      createSwiperCard(filterCard1, 'Activity') // 創建swiper card dom元素
       const str1 = createCard(filterCard2, 'ScenicSpot')
       const str2 = createCard(filterCard3, 'Restaurant')
 
@@ -80,14 +81,26 @@ $(() => {
         const theme = $(this).attr('data-id')
         sessionStorage.setItem('theme', JSON.stringify(theme))
       })
-    }).then(() => {
-      createSwiper()// 創建swiper實體
+
       $('#loading').addClass('d-none')
       $('.banner-title').addClass('animate__animated animate__fadeInUp animate__slow 2s')
       $('.banner-subTitle').addClass('animate__animated  animate__fadeInUp animate__slow 2s animate__delay-1s')
       setTimeout(() => {
         $('.banner-title-deco').addClass('extend')
       }, 1000)
+
+      $(window).on('scroll', function () {
+        const innerHight = $(window).innerHeight()
+        const outerWidth = $(window).outerWidth()
+        const scrollPos = $(window).scrollTop()
+        if (scrollPos > innerHight *.7 && outerWidth> 960) {
+          $('.hotPoint').addClass('animate__animated animate__bounceInLeft')
+          
+        }
+        if(scrollPos > innerHight *1.1 && outerWidth> 960){
+          $('.tastyFood').addClass('animate__animated animate__bounceInRight')
+        }
+      })
     })
   }
 })

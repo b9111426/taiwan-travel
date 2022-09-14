@@ -2,10 +2,10 @@
 export default {
   init () {
     $(window).on('scroll', function () {
-      const pageHight = $(window).innerHeight()
+      const innerHight = $(window).innerHeight()
       const scrollPos = $(window).scrollTop()
 
-      if (scrollPos > pageHight / 2) {
+      if (scrollPos > innerHight / 2) {
         $('.fixTop').fadeIn(500)
       } else {
         $('.fixTop').fadeOut(500)

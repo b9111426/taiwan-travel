@@ -3,6 +3,13 @@
 
 
 .search{
+  &-container{
+    margin: 0 auto;
+
+    @include x-laptop(){
+      width: 90%;
+    }
+  }
   &-btn{
     letter-spacing: .6rem;
   }

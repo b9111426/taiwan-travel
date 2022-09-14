@@ -46,10 +46,11 @@ $(() => {
   const geoHash = selectData.Position.GeoHash.slice(0, 4)
 
   $(window).on('scroll', function () {
-    const pageHight = $(window).innerHeight()
+    const innerHight = $(window).innerHeight()
+    const outerWidth = $(window).outerWidth()
     const scrollPos = $(window).scrollTop()
 
-    if (scrollPos > pageHight / 2) {
+    if (scrollPos > innerHight / 2 && outerWidth> 960) {
       $('.card-content').addClass('animate__animated animate__bounceInLeft')
     }
   })
@@ -59,5 +60,5 @@ $(() => {
   contentIntroLeft(selectData, theme)
   contentIntroMap(selectData, theme)
   $('#loading').addClass('d-none')
-}
+  }
 )

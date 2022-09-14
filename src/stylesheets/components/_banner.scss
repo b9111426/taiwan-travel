@@ -11,6 +11,9 @@
     @extend %centerPoint;
     width: 60vw;
 
+    @include x-laptop(){
+      width: 80vw;
+    }
     @include mobile(){
       width: 100vw;
     }
@@ -56,6 +59,10 @@
       backdrop-filter: blur(4px);
       border-radius: 6px;
       z-index: 2;
+      @include x-laptop(){
+        width: 75vw;
+      }
+
       @include pad(){
         width: 85vw;
       }
