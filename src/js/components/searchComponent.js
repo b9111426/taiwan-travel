@@ -27,6 +27,7 @@ export default {
   focus () {
     $('.search-input').trigger('focus')
   },
+  // 判斷切換select內容
   changeSelect () {
     if (location() !== 'index' && location() !== '') {
       getCity(getToken.getCookieToken()).then((res) => {
@@ -38,6 +39,7 @@ export default {
       changeSelection()
     }
   },
+  // 切換月曆收尋功能
   switchDateSearch () {
     $('.main-search').removeClass('col-lg-8').addClass('col-lg-6')
     const calendar = /* html */`
@@ -52,16 +54,79 @@ export default {
       this.calendarSetting
     )
   },
-  search () {
+  // 檢查輸入的值
+  checkValue (themeVal, val, dateData) {
     let searchOption = ''
     const token = getToken.getCookieToken()
+    const theme = JSON.parse(sessionStorage.getItem('theme'))
+    if (themeVal === 'hide' || val === '' || dateData === '') {
+      themeVal === 'hide' ? $('.select-alert').fadeIn(200) : $('.select-alert').fadeOut(200)
+      dateData === '' ? $('.date-alert').fadeIn(200) : $('.date-alert').fadeOut(200)
+      // 判斷是否是活動收尋,關鍵字非必須條件
+      if (theme !== 'Activity') {
+        val === '' ? $('.search-alert').fadeIn(200) : $('.search-alert').fadeOut(200)
+      } else if (dateData !== '' && themeVal !== 'hide') {
+        activitySearch(dateData)
+      }
+      setTimeout(() => {
+        $('.search-alert').fadeOut(200)
+        $('.select-alert').fadeOut(200)
+        $('.date-alert').fadeOut(200)
+      }, 2000)
+    } else {
+      if (location() === 'index' || location() === '') {
+        sessionStorage.setItem('theme', JSON.stringify(themeVal))
+        themeVal === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
+        $('.bi-search').addClass('d-none')
+        $('.spinner-border').removeClass('d-none')
+        const searchData = filterData(token, themeVal, '', searchOption, val)
+        searchData.then((res) => {
+          sessionStorage.setItem('filterData', JSON.stringify(res.data))
+          $('.bi-search').removeClass('d-none')
+          $('.spinner-border').addClass('d-none')
+          window.location.assign('./searchPage.html')
+        })
+      } else {
+        const theme = JSON.parse(sessionStorage.getItem('theme'))
+        theme === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
+        const searchData = filterCityData(token, theme, themeVal, searchOption, val)
+        $('.bi-search').addClass('d-none')
+        $('.spinner-border').removeClass('d-none')
+        searchData.then((res) => {
+          sessionStorage.setItem('filterData', JSON.stringify(res.data))
+          $('.bi-search').removeClass('d-none')
+          $('.spinner-border').addClass('d-none')
+          window.location.assign('./searchPage.html')
+        })
+      }
+    }
+
+    function activitySearch (dateData) {
+      const searchData = filterCityData(token, theme, themeVal, 'Description', val)
+      $('.bi-search').addClass('d-none')
+      $('.spinner-border').removeClass('d-none')
+      searchData.then((res) => {
+        const selectTime = parseInt(dateData.split('-').join(''))
+        const filterDate = res.data.filter((item) => {
+          const itemTime = parseInt(item.StartTime.split('T')[0].split('-').join(''))
+          return itemTime >= selectTime
+        })
+        sessionStorage.setItem('filterData', JSON.stringify(filterDate))
+        $('.bi-search').removeClass('d-none')
+        $('.spinner-border').addClass('d-none')
+        window.location.assign('./searchPage.html')
+      })
+    }
+  },
+  search () {
+    const thisObj = this
 
     $('.search-btn').on('click', function (e) {
       e.stopPropagation()
       const val = $('.search-input').val().trim()
       const themeVal = $('select').val()
       const dateData = $('.dateInput').val()
-      validate(themeVal, val, dateData)
+      thisObj.checkValue(themeVal, val, dateData)
     })
     $('.search-input').on('keydown', function (e) {
       const themeVal = $('select').val()
@@ -69,78 +134,16 @@ export default {
       $('.search-alert').fadeOut(200)
       if (e.key === 'Enter' || e.keyCode === 13) {
         e.preventDefault()
-        validate(themeVal, val)
+        thisObj.checkValue(themeVal, val)
       }
     })
-
-    function validate (themeVal, val, dateData) {
-      const theme = JSON.parse(sessionStorage.getItem('theme'))
-      if (themeVal === 'hide' || val === '' || dateData === '') {
-        themeVal === 'hide' ? $('.select-alert').fadeIn(200) : $('.select-alert').fadeOut(200)
-        dateData === '' ? $('.date-alert').fadeIn(200) : $('.date-alert').fadeOut(200)
-        // 判斷是否是活動收尋,關鍵字非必須條件
-        if (theme !== 'Activity') {
-          val === '' ? $('.search-alert').fadeIn(200) : $('.search-alert').fadeOut(200)
-        }else if(dateData !== ''&& themeVal !== 'hide'){
-          activitySearch (dateData)
-        }
-        setTimeout(() => {
-          $('.search-alert').fadeOut(200)
-          $('.select-alert').fadeOut(200)
-          $('.date-alert').fadeOut(200)
-        }, 2000)
-      }else {
-        if (location() === 'index'||location() === '') {
-          sessionStorage.setItem('theme', JSON.stringify(themeVal))
-          themeVal === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
-          $('.bi-search').addClass('d-none')
-          $('.spinner-border').removeClass('d-none')
-          const searchData = filterData(token, themeVal, '', searchOption, val)
-          searchData.then((res) => {
-            sessionStorage.setItem('filterData', JSON.stringify(res.data))
-            $('.bi-search').removeClass('d-none')
-            $('.spinner-border').addClass('d-none')
-            window.location.assign('./searchPage.html')
-          })
-        }else {
-          const theme = JSON.parse(sessionStorage.getItem('theme'))
-          theme === 'ScenicSpot' ? searchOption = 'DescriptionDetail' : searchOption = 'Description'
-          const searchData = filterCityData(token, theme, themeVal, searchOption, val)
-          $('.bi-search').addClass('d-none')
-          $('.spinner-border').removeClass('d-none')
-          searchData.then((res) => {
-            sessionStorage.setItem('filterData', JSON.stringify(res.data))
-            $('.bi-search').removeClass('d-none')
-            $('.spinner-border').addClass('d-none')
-            window.location.assign('./searchPage.html')
-          })
-        }
-      }
-
-      function activitySearch (dateData) {
-        const searchData = filterCityData(token, theme, themeVal, 'Description', val)
-        $('.bi-search').addClass('d-none')
-        $('.spinner-border').removeClass('d-none')
-        searchData.then((res) => {
-          const selectTime = parseInt(dateData.split('-').join(''))
-          const filterDate = res.data.filter((item) => {
-            const itemTime = parseInt(item.StartTime.split('T')[0].split('-').join(''))
-            return itemTime >= selectTime
-          })
-          sessionStorage.setItem('filterData', JSON.stringify(filterDate))
-          $('.bi-search').removeClass('d-none')
-          $('.spinner-border').addClass('d-none')
-          window.location.assign('./searchPage.html')
-        })
-      }
-    }
   },
   init () {
     const theme = JSON.parse(sessionStorage.getItem('theme'))
     if (theme === 'Activity') {
       this.switchDateSearch()
     }
-    
+
     if (location() === '' || location() === 'index') {
       this.focus()
     } else {
