@@ -29,3 +29,6 @@
 <a href="">
     <img height="50" src="https://www.vectorlogo.zone/logos/jquery/jquery-vertical.svg"/>
 </a>
+<a href="">
+    <img height="50" src="https://www.vectorlogo.zone/logos/parceljs/parceljs-icon.svg"/>
+</a>
