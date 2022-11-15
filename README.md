@@ -9,6 +9,9 @@
 - 資料收尋
 - Geohash編碼查詢範圍
 - 地圖運用
+- 使用js客製化form表單樣式
+- jQuery datapicker套用
+
 ---
 # 技術使用 
 
