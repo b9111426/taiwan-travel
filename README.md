@@ -32,3 +32,5 @@
 <a href="">
     <img height="50" src="https://www.vectorlogo.zone/logos/parceljs/parceljs-icon.svg"/>
 </a>
+
+Html、CSS、Bootstrap、Scss、javascript、jQuery、Parceljs
