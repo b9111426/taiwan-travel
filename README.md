@@ -8,6 +8,7 @@
 - 活動日期篩選
 - 資料收尋
 - Geohash編碼查詢範圍
+- 地圖運用
 ---
 # 技術使用 
 
@@ -34,3 +35,9 @@
 </a>
 
 Html、CSS、Bootstrap、Scss、javascript、jQuery、Parceljs
+
+## 套件使用
+- swiper輪播運用
+- axios
+- AnimateCSS 
+- Leaflet地圖套件、 套用OpenStreeMap
