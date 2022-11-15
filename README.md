@@ -45,6 +45,6 @@ Html、CSS、Bootstrap、Scss、javascript、jQuery、Parceljs
 - AnimateCSS 
 - Leaflet地圖套件、 套用OpenStreeMap
   
-  <img width="300" src="https://i.imgur.com/axvcoyM.png"/>
+  <img width="400" src="https://i.imgur.com/axvcoyM.png"/>
 
 
