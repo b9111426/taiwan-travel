@@ -44,3 +44,7 @@ Html、CSS、Bootstrap、Scss、javascript、jQuery、Parceljs
 - axios
 - AnimateCSS 
 - Leaflet地圖套件、 套用OpenStreeMap
+  
+  <img width="300" src="https://i.imgur.com/axvcoyM.png"/>
+
+
