@@ -9,7 +9,7 @@
 - 資料收尋
 - Geohash編碼查詢範圍
 - 地圖運用
-- 使用js客製化form表單樣式
+- 使用js客製化select表單樣式
 - jQuery datapicker套用
 
 ---
