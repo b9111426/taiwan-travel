@@ -46,10 +46,10 @@
 Html、CSS、Bootstrap、Scss、javascript、jQuery、Parceljs
 
 ## 套件使用
-- swiper輪播運用
+- swiper 輪播運用
 - axios
 - AnimateCSS 
-- Leaflet地圖套件、 套用OpenStreeMap
+- Leaflet 地圖套件、 套用OpenStreeMap
   
   <img width="400" src="https://i.imgur.com/axvcoyM.png"/>
 
